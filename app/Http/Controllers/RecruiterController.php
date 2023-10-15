@@ -62,7 +62,7 @@ class RecruiterController extends Controller
         return redirect()->route('recruiter_login');
     }
 
-    public function logout(){
+    public function destroy(){
         Auth::guard('recruiter')->logout();
         return redirect()->route('recruiter_login')->with('msg', '');
         //return redirect()->route('recruiter_login');
