@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecruiterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +29,22 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+/* ---------------------- Recruiter ---------------------- */
+Route::get('/recruitment', function () {
+    return view('recruiter.index');
+});
+
+Route::prefix('recruiter')->group(function() {
+    //Dashboard
+    Route::get('/dashboard', [RecruiterController::class, 'showDashboard'])->name('recruiter_dashboard')->middleware('recruiter');
+
+    //Login
+    Route::get('/login', [RecruiterController::class, 'showLogin'])->name('recruiter_login');
+    Route::post('/login/account', [RecruiterController::class, 'Login'])->name('recruiter_account');
+    //Register
+    Route::get('/register', [RecruiterController::class, 'showRegister'])->name('recruiter_register');
+    Route::post('/register/create', [RecruiterController::class, 'Create'])->name('recruiter_create');
+});
