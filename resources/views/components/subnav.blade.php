@@ -262,6 +262,16 @@
                                             Settings
                                         </a>
                                     </li>
+                                    <hr class="my-0.5 p-0 m-0 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+                                    <li>
+                                        <form action="/logout" method="POST">
+                                            @csrf
+                                            <button type="submit" class="inline-flex items-center text-lg px-4 text-gray-700 hover:text-gray-900 w-full hover:bg-gray-200 p-2 font-medium rounded-b-lg">
+                                                <i class="fa-solid fa-arrow-right-from-bracket mr-3 text-md text-red-500"></i>
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
