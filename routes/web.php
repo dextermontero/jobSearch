@@ -15,10 +15,10 @@ use App\Http\Controllers\RecruiterController;
 */
 require __DIR__.'/auth.php';
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
-
+ */
 /* Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,8 +28,23 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 }); */
+/* ---------------------- Web ---------------------- */
 
+Route::get('/careers', function(){
+    return view('jobs.index')->with('title', 'Careers Lists');
+});
 
+Route::get('/companies', function() {
+    return view('company.index')->with('title', 'Company Lists | Job Search');
+});
+
+Route::get('/companies/reviews', function() {
+    return view('company.reviews.index')->with('title', 'Company Reviews | Job Search');
+});
+
+Route::get('/companies/salaries', function() {
+    return view('company.salaries.index')->with('title', 'Company Salaries | Job Search');
+});
 
 
 /* ---------------------- Users ---------------------- */

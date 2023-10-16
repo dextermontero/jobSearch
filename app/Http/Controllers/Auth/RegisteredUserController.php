@@ -41,11 +41,9 @@ class RegisteredUserController extends Controller
         $dttm = now();
 
         $user = User::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            
+            'created_at' => $dttm
         ]);
 
         DB::table('user_information')->insert([
@@ -62,6 +60,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('user_dashboard');
     }
 }

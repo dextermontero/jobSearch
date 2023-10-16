@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('uid')->unsigned();
             $table->foreign('uid')->references('id')->on('users');
+            $table->string('img_profile')->default('user_default.png');
             $table->string('firstname', '50');
             $table->string('lastname', '50');
             $table->string('email');
