@@ -281,6 +281,135 @@
             </div>
         </form>
     </div>
+    @if (Auth::check())
+        <div class="md:-mt-56 py-5 mb-10">
+            <h2 class="text-gray-200 text-2xl px-4 font-medium mb-5">Suggested Jobs</h2>
+            <div class="flex flex-row overflow-x-scroll focus:scroll-auto space-x-2 p-4 mt-5 h-auto w-full mb-10">
+                <div class="bg-white rounded-md shadow-md px-2 py-2 w-full">
+                    <div class="inline-flex items-center">
+                        <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-16 w-16 mr-2 shadow-sm" alt="Company Logo">
+                        <p class="text-lg font-medium truncate whitespace-nowrap">Job title asdasdasdasa asdasdas</p>
+                    </div>
+                    <div class="flex flex-col justify-center mt-2 px-3">
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-xl mr-2 text-red-700"></i>
+                            <p class="text-xl font-medium">Mandaluyong</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-suitcase text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">Full time</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-clock text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">12 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md shadow-md px-2 py-2 w-full mr-4">
+                    <div class="inline-flex items-center">
+                        <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-16 w-16 mr-2 shadow-sm" alt="Company Logo">
+                        <p class="text-lg font-medium truncate whitespace-nowrap">Job title asdasdasdasa asdasdas</p>
+                    </div>
+                    <div class="flex flex-col justify-center mt-2 px-3">
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-xl mr-2 text-red-700"></i>
+                            <p class="text-xl font-medium">Mandaluyong</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-suitcase text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">Full time</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-clock text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">12 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md shadow-md px-2 py-2 w-full mr-4">
+                    <div class="inline-flex items-center">
+                        <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-16 w-16 mr-2 shadow-sm" alt="Company Logo">
+                        <p class="text-lg font-medium truncate whitespace-nowrap">Job title asdasdasdasa asdasdas</p>
+                    </div>
+                    <div class="flex flex-col justify-center mt-2 px-3">
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-xl mr-2 text-red-700"></i>
+                            <p class="text-xl font-medium">Mandaluyong</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-suitcase text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">Full time</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-clock text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">12 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md shadow-md px-2 py-2 w-full mr-4">
+                    <div class="inline-flex items-center">
+                        <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-16 w-16 mr-2 shadow-sm" alt="Company Logo">
+                        <p class="text-lg font-medium truncate whitespace-nowrap">Job title asdasdasdasa asdasdas</p>
+                    </div>
+                    <div class="flex flex-col justify-center mt-2 px-3">
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-xl mr-2 text-red-700"></i>
+                            <p class="text-xl font-medium">Mandaluyong</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-suitcase text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">Full time</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-clock text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">12 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md shadow-md px-2 py-2 w-full mr-4">
+                    <div class="inline-flex items-center">
+                        <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-16 w-16 mr-2 shadow-sm" alt="Company Logo">
+                        <p class="text-lg font-medium truncate whitespace-nowrap">Job title asdasdasdasa asdasdas</p>
+                    </div>
+                    <div class="flex flex-col justify-center mt-2 px-3">
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-xl mr-2 text-red-700"></i>
+                            <p class="text-xl font-medium">Mandaluyong</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-suitcase text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">Full time</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-clock text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">12 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md shadow-md px-2 py-2 w-full mr-4">
+                    <div class="inline-flex items-center">
+                        <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-16 w-16 mr-2 shadow-sm" alt="Company Logo">
+                        <p class="text-lg font-medium truncate whitespace-nowrap">Job title asdasdasdasa asdasdas</p>
+                    </div>
+                    <div class="flex flex-col justify-center mt-2 px-3">
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-xl mr-2 text-red-700"></i>
+                            <p class="text-xl font-medium">Mandaluyong</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-suitcase text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">Full time</p>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <i class="fa-solid fa-clock text-lg mr-2 text-gray-700"></i>
+                            <p class="text-xl font-medium">12 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    @else
+
+    @endif
 </div>
 
 @include('partials.footer')

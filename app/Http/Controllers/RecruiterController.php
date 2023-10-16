@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Recruiter;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Validator;
 
 class RecruiterController extends Controller
 {
@@ -24,13 +26,17 @@ class RecruiterController extends Controller
     }
     
     public function Login(Request $request){
-        $recruiter = $request->all();
 
-        if(Auth::guard('recruiter')->attempt(['email' => $recruiter['email'], 'password' => $recruiter['password']])){
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if(Auth::guard('recruiter')->attempt($credentials)){
+            $request->session()->regenerate();
             return redirect()->route('recruiter_dashboard');
-        }else{
-            return back()->with('msg', 'Error');
         }
+        return Redirect::back()->withErrors(['loginErr' => 'Incorrect Email address or Password. Please try again!']);
     }
 
     public function Create(Request $request){
