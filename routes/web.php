@@ -77,6 +77,6 @@ Route::prefix('recruiter')->group(function() {
     Route::get('/register', [RecruiterController::class, 'showRegister'])->name('recruiter_register');
     Route::post('/register/create', [RecruiterController::class, 'Create'])->name('recruiter_create');
 
-    Route::post('/logout', [RecruiterController::class, 'destroy'])->name('recruiter_logout');
+    Route::get('/logout', [RecruiterController::class, 'destroy'])->name('recruiter_logout');
 
 });
