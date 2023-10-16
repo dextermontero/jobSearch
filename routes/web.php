@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruiterController;
 
@@ -31,7 +32,7 @@ Route::middleware('auth')->group(function () {
 /* ---------------------- Web ---------------------- */
 
 Route::get('/careers', function(){
-    return view('jobs.index')->with('title', 'Careers Lists');
+    return view('jobs.index')->with('title', 'Careers Lists | Job Search');
 });
 
 Route::get('/companies', function() {
@@ -45,6 +46,13 @@ Route::get('/companies/reviews', function() {
 Route::get('/companies/salaries', function() {
     return view('company.salaries.index')->with('title', 'Company Salaries | Job Search');
 });
+
+
+Route::controller(CountryController::class)->group(function() {
+    Route::get('/countries', 'showAll');
+    Route::get('/countries/{id}', 'getCountryCode')->where(['slug' => '[A-Za-z]']);
+});
+
 
 
 /* ---------------------- Users ---------------------- */
