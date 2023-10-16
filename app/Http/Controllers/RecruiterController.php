@@ -43,7 +43,7 @@ class RecruiterController extends Controller
         $request->validate([
             'firstname' => ['required', 'alpha', 'min:2'],
             'lastname' => ['required', 'alpha', 'min:2'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Recruiter::class],
             'password' => ['required',  Rules\Password::defaults()],
         ]);
 
