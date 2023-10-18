@@ -10,6 +10,8 @@ export default {
         './resources/views/**/**/*.blade.php',
         './resources/views/**/**/**/*.blade.php',
         "./node_modules/flowbite/**/*.js",
+        "./resources/css/*.css",
+        "./resources/js/*.{js,ts}",
     ],
 
     theme: {

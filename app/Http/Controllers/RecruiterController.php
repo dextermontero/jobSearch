@@ -13,9 +13,6 @@ use Illuminate\Validation\Validator;
 
 class RecruiterController extends Controller
 {
-    public function showLogin(){
-        return view('recruiter.auth.login');
-    }
 
     public function showDashboard(){
         return view('recruiter.dashboard.index');
@@ -23,6 +20,14 @@ class RecruiterController extends Controller
 
     public function showRegister(){
         return view('recruiter.auth.register');
+    }
+
+    public function showLogin(){
+        return view('recruiter.auth.login');
+    }
+
+    public function showPost() {
+        return view('recruiter.post.post');
     }
     
     public function Login(Request $request){
