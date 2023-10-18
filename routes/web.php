@@ -67,16 +67,22 @@ Route::get('/recruitment', function () {
 })->middleware('guest');
 
 Route::prefix('recruiter')->group(function() {
-    //Dashboard
-    Route::get('/dashboard', [RecruiterController::class, 'showDashboard'])->name('recruiter_dashboard')->middleware('auth:recruiter');
+    // Get Routes //
 
-    //Login
+    // Login , Register and Login 
     Route::get('/login', [RecruiterController::class, 'showLogin'])->name('recruiter_login');
-    Route::post('/login/account', [RecruiterController::class, 'Login'])->name('recruiter_account');
-    //Register
     Route::get('/register', [RecruiterController::class, 'showRegister'])->name('recruiter_register');
+    Route::get('/logout', [RecruiterController::class, 'destroy'])->name('recruiter_logout');
+    // Dashboard
+    Route::get('/dashboard', [RecruiterController::class, 'showDashboard'])->name('recruiter_dashboard')->middleware('auth:recruiter');
+    // Job Post
+    Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
+    // Post Routes //
+
+    // Login , Register
+    Route::post('/login/account', [RecruiterController::class, 'Login'])->name('recruiter_account');
     Route::post('/register/create', [RecruiterController::class, 'Create'])->name('recruiter_create');
 
-    Route::get('/logout', [RecruiterController::class, 'destroy'])->name('recruiter_logout');
+    
 
 });
