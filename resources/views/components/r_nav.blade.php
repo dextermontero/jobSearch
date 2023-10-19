@@ -76,10 +76,10 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
+                <a href="{{ route('recruiter_companyinfo') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
                     <i class="fa-solid fa-building flex-shrink-0 w-5 h-5 text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Company</span>
-                    <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                    {{-- <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}
                 </a>
             </li>
             <li>
