@@ -1,4 +1,8 @@
-@include("partials.r_header", [$title])     
+
+@if (Auth::guard('recruiter')->check())
+    <script>window.location = "{{ route('recruiter_dashboard') }}";</script>
+@else
+    @include("partials.r_header", [$title])
     <div class="container mx-auto py-4 px-3 mt-10 mb-14">
         <div class="flex items-center justify-center mx-auto bg-white mt-10 rounded-lg shadow-md w-full md:w-9/12">
             <div class="grid grid-cols-1 lg:grid-cols-2 w-full items-center">
@@ -25,10 +29,10 @@
                         <div class="flex justify-between items-center px-1 mb-2">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                  <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2 focus:ring-indigo-700">
+                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2 focus:ring-indigo-700">
                                 </div>
                                 <div class="ml-3 text-sm">
-                                  <label for="remember" class="text-gray-700 font-medium">Remember me</label>
+                                    <label for="remember" class="text-gray-700 font-medium">Remember me</label>
                                 </div>
                             </div>
                             <a href="#forgot" class="text-indigo-700 font-medium hover:underline">Forgot Password?</a>
@@ -52,4 +56,5 @@
             </div>
         </div>
     </div>
-@include('partials.footer')
+    @include('partials.footer')        
+@endif     

@@ -53,8 +53,6 @@ Route::controller(CountryController::class)->group(function() {
     Route::get('/countries/{id}', 'getCountryCode')->where(['slug' => '[A-Za-z]']);
 });
 
-
-
 /* ---------------------- Users ---------------------- */
 
 Route::get('/', function () {
@@ -66,7 +64,7 @@ Route::get('/recruitment', function () {
     return view('recruiter.index');
 })->middleware('guest');
 
-Route::prefix('recruiter')->group(function() {
+Route::prefix('recruiter')->middleware('nocache')->group(function() {
     // Get Routes //
 
     // Login , Register and Login 
@@ -77,12 +75,12 @@ Route::prefix('recruiter')->group(function() {
     Route::get('/dashboard', [RecruiterController::class, 'showDashboard'])->name('recruiter_dashboard')->middleware('auth:recruiter');
     // Job Post
     Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
+    // Company Info
+    Route::get('/company', [RecruiterController::class, 'showCompanyInfo'])->name('recruiter_companyinfo')->middleware('auth:recruiter');
+    
     // Post Routes //
 
     // Login , Register
     Route::post('/login/account', [RecruiterController::class, 'Login'])->name('recruiter_account');
     Route::post('/register/create', [RecruiterController::class, 'Create'])->name('recruiter_create');
-
-    
-
 });
