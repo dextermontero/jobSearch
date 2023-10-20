@@ -11,8 +11,6 @@
                             <span class="text-green-600 text-xl font-medium">Active</span>
                         </div>
                     </div>
-                    <hr>
-                    <a href="#" class="text-center p-2 text-blue-600 font-medium text-md hover:text-blue-800 hover:underline"><i class="fa-solid fa-eye"></i> View</a>
                 </div>
                 <div class="bg-gray-50 rounded flex flex-col">
                     <div class="flex flex-wrap items-center place-content-center md:justify-between px-8 py-4">
@@ -22,8 +20,6 @@
                             <span class="text-red-600 text-xl font-medium">Inactive</span>
                         </div>
                     </div>
-                    <hr>
-                    <a href="#" class="text-center p-2 text-blue-600 font-medium text-md hover:text-blue-800 hover:underline"><i class="fa-solid fa-eye"></i> View</a>
                 </div>
                 <div class="bg-gray-50 rounded flex flex-col">
                     <div class="flex flex-wrap items-center place-content-center md:justify-between px-8 py-4">
@@ -33,15 +29,14 @@
                             <span class="text-blue-600 text-xl font-medium">Archive</span>
                         </div>
                     </div>
-                    <hr>
-                    <a href="#" class="text-center p-2 text-blue-600 font-medium text-md hover:text-blue-800 hover:underline"><i class="fa-solid fa-eye"></i> View</a>
                 </div>
             </div>
-
+            <div class="rounded py-4 mb-4">
+                <a href="#post" class="bg-indigo-600 text-white p-3 rounded-full mb-4">
+                    Create Job Post
+                </a>
+            </div>
             <div class="bg-gray-50 rounded p-4">
-                <div>
-
-                </div>
                 <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400" id="tabExample" role="tablist">
                         <li class="mr-2" role="presentation">
@@ -1027,14 +1022,14 @@
                                         <div>
                                             <button type="submit" data-tooltip-target="tooltip_48" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
                                                 <i class="fa-solid fa-arrow-rotate-left"></i>
-                                                <div id="tooltip_49" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                <div id="tooltip_48" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                                     Click to re-active post
                                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                                 </div>
                                             </button>
                                             <button type="submit" data-tooltip-target="tooltip_49" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
                                                 <i class="fa-solid fa-trash-can"></i>
-                                                <div id="tooltip_50" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                <div id="tooltip_49" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                                     Click to permanent delete post
                                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                                 </div>
