@@ -15,7 +15,9 @@
                 <div class="flex items-center">
                     <div class="flex items-center ml-3">
                         <div class="inline-flex items-center">
-                            <a href="#" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">Create Post</a>
+                            @if (url()->current() != route('recruiter_post'))
+                                <a href="#" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">Create Post</a>
+                            @endif
                             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
                                 @foreach(App\Models\Recruiter::select('recruiter_information.img_profile', 'recruiter_information.firstname', 'recruiter_information.lastname', 'recruiters.email')->join('recruiter_information', 'recruiter_information.uid', '=', 'recruiters.id')->get(['recruiter_information.img_profile', 'recruiter_information.firstname', 'recruiter_information.lastname']); as $recruiter)                              
@@ -59,7 +61,12 @@
             <h2 class="text-lg text-gray-200 font-medium font-poppins text-center">Company Name</h2>
         </div>
         <ul class="space-y-2 font-medium">
-            <li>
+            @if (url()->current() === route('recruiter_dashboard'))
+                <li class="bg-gray-700 rounded-lg border-r-2 border-l-2 border-indigo-700">
+            @else
+                <li class="border-r-2 border-l-2 border-gray-900">
+            @endif
+            
                 <a href="{{ route('recruiter_dashboard') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
@@ -68,14 +75,22 @@
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
-            <li>
+            @if (url()->current() === route('recruiter_post'))
+                <li class="bg-gray-700 rounded-lg border-r-2 border-l-2 border-indigo-700">
+            @else
+                <li class="border-r-2 border-l-2 border-gray-900">
+            @endif
                 <a href="{{ route('recruiter_post') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
                     <i class="fa-solid fa-pencil flex-shrink-0 w-5 h-5 text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Job Post</span>
                     {{-- <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span> --}}
                 </a>
             </li>
-            <li>
+            @if (url()->current() === route('recruiter_companyinfo'))
+                <li class="bg-gray-700 rounded-lg border-r-2 border-l-2 border-indigo-700">
+            @else
+                <li class="border-r-2 border-l-2 border-gray-900">
+            @endif
                 <a href="{{ route('recruiter_companyinfo') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
                     <i class="fa-solid fa-building flex-shrink-0 w-5 h-5 text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Company</span>
