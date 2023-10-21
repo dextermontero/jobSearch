@@ -75,6 +75,7 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::get('/dashboard', [RecruiterController::class, 'showDashboard'])->name('recruiter_dashboard')->middleware('auth:recruiter');
     // Job Post
     Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
+    Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
     // Company Info
     Route::get('/company', [RecruiterController::class, 'showCompanyInfo'])->name('recruiter_companyinfo')->middleware('auth:recruiter');
     

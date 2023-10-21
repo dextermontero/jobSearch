@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="rounded py-4 mb-4">
-                <a href="#post" class="bg-indigo-600 text-white p-3 rounded-full mb-4">
+                <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-white p-3 rounded-full mb-4">
                     Create Job Post
                 </a>
             </div>
