@@ -30,6 +30,10 @@ class RecruiterController extends Controller
         return view('recruiter.post.post');
     }
 
+    public function showJobPost() {
+        return view('recruiter.post.jobs');
+    }
+
     public function showCompanyInfo() {
         return view('recruiter.company.company');
     }
