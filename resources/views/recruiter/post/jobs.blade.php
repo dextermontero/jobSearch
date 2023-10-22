@@ -1,37 +1,44 @@
-@include("partials.r_header", [$title])   
-<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+@include("partials.r_header", [$title])
 <div class="min-h-screen mt-5">
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="bg-gray-50 rounded p-4">
                 <div class="mb-4">
-                    <h2 class="text-2xl font-poppins  font-bold tracking-wider mb-4">Compose ads</h2>
-                    <form class="" id="post_job">
-                        <div class="flex flex-wrap items-center gap-4 mb-4">
-                            <div class="flex justify-center items-center">
-                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-36 w-36">
+                    <h2 class="text-2xl font-poppins font-bold tracking-wider mb-4">Compose Job Hiring</h2>
+                    <form class="mb-20">
+                        <div class="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 p-2">
+                            <div class="">
+                                <div class="flex flex-col mb-4">
+                                    <div class="mb-4">
+                                        <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-36 w-36">
+                                    </div>
+                                    <div class="col-span-2 w-full">
+                                        <div class="mb-4">
+                                            <label for="company_name" class="block mb-2 text-lg font-medium text-gray-900">Company Name</label>
+                                            <input type="text" id="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Company Name" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="company_country" class="block mb-2 text-lg font-medium text-gray-900">Country</label>
+                                            <input type="text" id="company_country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Company Country" disabled>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-span-2 max-w-auto">
+                            <div class="p-0 md:px-4">
                                 <div class="mb-4">
-                                    <label for="company_name" class="block mb-2 text-sm font-medium text-gray-900">Company Name</label>
-                                    <input type="text" id="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Name" required>
+                                    <label for="job_title" class="block mb-2 text-lg font-medium text-gray-900">Job Title</label>
+                                    <input type="text" id="job_title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Job title" required>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="company_country" class="block mb-2 text-sm font-medium text-gray-900">Company Name</label>
-                                    <input type="text" id="company_country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Name" required>
-                                </div>
+                                <div id="editor" style="min-height:px; important!" ></div>
+                                <input type="hidden" name="quill-html" id="quill-html">
+                                <button type="submit"  id="post" class="rounded-full py-2 px-3 bg-blue-500 text-gray-50 mt-8 text-right">Post Hiring</button>
                             </div>
                         </div>
-                        <div id="editor">
-                        </div>
-                        <input type="hidden" name="quill-html" id="quill-html">
-                        <button type="submit"  id="post" class="rounded-full py-2 px-3 bg-blue-500 text-gray-50 mt-8">Post Hiring</button>
                     </form>
                 </div>
             </div>
         </div>
         @include('partials.r_footer')
-        <script src="https://cdn.quilljs.com/1.0.0/quill.min.js"></script>
         <script>
             var toolbarOptions = [
                 [

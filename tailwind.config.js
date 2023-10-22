@@ -12,6 +12,8 @@ export default {
         "./node_modules/flowbite/**/*.js",
         "./resources/css/*.css",
         "./resources/js/*.{js,ts}",
+        "./public/assets/css/*.css",
+        "./public/assets/js/*.{js,ts.map}",
     ],
 
     theme: {

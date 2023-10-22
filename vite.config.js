@@ -8,6 +8,8 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'public/assets/css/quill.snow.css',
+                'public/assets/js/quill.min.js',
             ],
             refresh: true,
         }),
