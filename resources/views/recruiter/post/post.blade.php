@@ -31,8 +31,8 @@
                     </div>
                 </div>
             </div>
-            <div class="rounded py-4 mb-4">
-                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', 0, 'AND', 'recruiters.id', '=', Auth::id())->count() >= 0)
+            <div class="rounded py-4">
+                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', 0, 'AND', 'recruiters.id', '=', Auth::id())->count() > 0)
                     <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-white p-3 rounded-full mb-4">
                         Create Job Post
                     </a>

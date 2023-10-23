@@ -78,6 +78,7 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
     // Company Info
     Route::get('/company', [RecruiterController::class, 'showCompanyInfo'])->name('recruiter_companyinfo')->middleware('auth:recruiter');
+    Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter');
     
     // Post Routes //
 
