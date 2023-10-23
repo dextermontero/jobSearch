@@ -7,9 +7,9 @@
                     <h2 class="text-2xl font-poppins font-bold tracking-wider mb-4">Compose Job Hiring</h2>
                     <form class="mb-20">
                         <div class="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 p-2">
-                            <div class="">
-                                <div class="flex flex-col mb-4">
-                                    <div class="mb-4">
+                            <div class="mb-4">
+                                <div class="flex flex-col">
+                                    <div class="mb-4 flex justify-center">
                                         <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-36 w-36">
                                     </div>
                                     <div class="col-span-2 w-full">

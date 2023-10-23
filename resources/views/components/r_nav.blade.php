@@ -16,7 +16,38 @@
                     <div class="flex items-center ml-3">
                         <div class="inline-flex items-center">
                             @if (url()->current() != route('recruiter_post'))
-                                <a href="#" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">Create Post</a>
+                                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', 0, 'AND', 'recruiters.id', '=', Auth::id())->count() > 0)
+                                    <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">
+                                        Create Job Post
+                                    </a>
+                                @else
+                                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300" type="button">
+                                        Create Job Post
+                                    </button>
+                                    <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative w-full max-w-md max-h-full">
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                                <div class="p-6 text-center">
+                                                    <h3 class="inline-flex items-center justify-center text-xl font-semibold text-gray-900 mb-4">
+                                                        <i class="fa-solid fa-circle-info mr-3 text-blue-700"></i>
+                                                        Ooppss
+                                                    </h3>
+                                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Company Information not complete, <b>Setup now!</b></h3>
+                                                    <a href="{{ route('recruiter_companyinfo') }}" data-modal-hide="popup-modal"  class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                        Yes, I'm sure
+                                                    </a>
+                                                    <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             @endif
                             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
@@ -58,7 +89,7 @@
     <div class="h-full px-3 pb-4 overflow-y-auto mt-8 bg-gray-900 dark:bg-gray-800">
         <div class="space-y-2 mb-5 flex flex-col items-center justify-center">
             <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-24 w-24 shadow-md rounded-lg">
-            <h2 class="text-lg text-gray-200 font-medium font-poppins text-center">Company Name</h2>
+            <h2 class="text-lg text-gray-200 font-medium font-poppins text-center">Not Set</h2> {{-- Company Name --}}
         </div>
         <ul class="space-y-2 font-medium">
             @if (url()->current() === route('recruiter_dashboard'))

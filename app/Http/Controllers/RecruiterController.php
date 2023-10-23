@@ -37,6 +37,10 @@ class RecruiterController extends Controller
     public function showCompanyInfo() {
         return view('recruiter.company.company');
     }
+
+    public function createCompany() {
+        return view('recruiter.company.create');
+    }
     
     public function Login(Request $request){
 
