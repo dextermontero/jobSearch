@@ -18,11 +18,11 @@
                             @if (url()->current() != route('recruiter_post'))
                                 @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', 0, 'AND', 'recruiters.id', '=', Auth::id())->count() > 0)
                                     <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">
-                                        Create Job Post
+                                        Create Job a post
                                     </a>
                                 @else
                                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300" type="button">
-                                        Create Job Post
+                                        Create Job a post
                                     </button>
                                     <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative w-full max-w-md max-h-full">
@@ -40,7 +40,7 @@
                                                     </h3>
                                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Company Information not complete, <b>Setup now!</b></h3>
                                                     <a href="{{ route('recruiter_companyinfo') }}" data-modal-hide="popup-modal"  class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                                        Yes, I'm sure
+                                                        Update now
                                                     </a>
                                                     <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, Cancel</button>
                                                 </div>
@@ -99,10 +99,7 @@
             @endif
             
                 <a href="{{ route('recruiter_dashboard') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                        <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                        <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                    </svg>
+                    <i class="fa-solid fa-table-columns flex-shrink-0 w-5 h-5 text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
