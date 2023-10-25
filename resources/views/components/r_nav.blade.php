@@ -52,7 +52,7 @@
                             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
                                 @foreach(App\Models\Recruiter::select('recruiter_information.img_profile', 'recruiter_information.firstname', 'recruiter_information.lastname', 'recruiters.email')->join('recruiter_information', 'recruiter_information.uid', '=', 'recruiters.id')->get(['recruiter_information.img_profile', 'recruiter_information.firstname', 'recruiter_information.lastname']); as $recruiter)                              
-                                <img class="w-8 h-8 rounded-full" src="{{ asset('assets/profiles/'.$recruiter->img_profile)}}" alt="{{ Str::ucfirst($recruiter->firstname)}} {{ Str::ucfirst($recruiter->lastname)}}">
+                                    <img class="w-8 h-8 rounded-full" src="{{ asset('assets/profiles/'.$recruiter->img_profile)}}" alt="{{ Str::ucfirst($recruiter->firstname)}} {{ Str::ucfirst($recruiter->lastname)}}">
                                 @endforeach
                             </button>
                         </div>
@@ -87,9 +87,12 @@
 
 <aside id="recruiter-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-gray-900 border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto mt-8 bg-gray-900 dark:bg-gray-800">
-        <div class="space-y-2 mb-5 flex flex-col items-center justify-center">
-            <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-24 w-24 shadow-md rounded-lg">
-            <h2 class="text-lg text-gray-200 font-medium font-poppins text-center">Not Set</h2> {{-- Company Name --}}
+        <div class="mb-5 flex flex-col items-center justify-center">
+            @foreach(App\Models\Recruiter::select('recruiter_information.img_profile', 'recruiter_information.firstname', 'recruiter_information.lastname', 'recruiters.email')->join('recruiter_information', 'recruiter_information.uid', '=', 'recruiters.id')->get(['recruiter_information.img_profile', 'recruiter_information.firstname', 'recruiter_information.lastname']); as $recruiter)
+                <img src="{{ asset('assets/profiles/'.$recruiter->img_profile)}}" class="h-24 w-24 shadow-md rounded-lg mb-2" alt="{{ Str::ucfirst($recruiter->firstname)}} {{ Str::ucfirst($recruiter->lastname)}}">
+                <h2 class="text-xl text-gray-200 font-bold subpixel-antialiased font-poppins text-center">{{ Str::ucfirst($recruiter->firstname)}} {{ Str::ucfirst($recruiter->lastname)}}</h2>
+                <span class="font-medium antialiased tracking-wide text-blue-500">Recruiter</span>
+            @endforeach
         </div>
         <ul class="space-y-2 font-medium">
             @if (url()->current() === route('recruiter_dashboard'))
@@ -140,14 +143,6 @@
         </ul>
     </div>
 </aside>
-
-
-
-
-
-
-
-
 
 @else 
     <nav class="bg-gray-900 py-4 px-1 text-gray-300 z-30">

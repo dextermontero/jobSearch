@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('company_uid')->unsigned();
             $table->foreign('company_uid')->references('id')->on('recruiters');
+            $table->string('company_logo')->default('default.png');
+            $table->string('company_bg')->default('');
             $table->text('company_name');
             $table->text('company_description');
             $table->text('company_industry');
