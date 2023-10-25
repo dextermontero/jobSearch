@@ -18,7 +18,7 @@
         <div class="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-center">
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 1</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -37,7 +37,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 2</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -56,7 +56,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 3</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -75,7 +75,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 4</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -94,7 +94,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 5</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -113,7 +113,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 6</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -132,7 +132,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 7</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -151,7 +151,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 8</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -170,7 +170,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 9</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -189,7 +189,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 10</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -208,7 +208,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 11</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">
@@ -227,7 +227,7 @@
             </a>
             <a href="#" class="bg-white w-full shadow-md p-5 rounded-md text-gray-600 hover:text-indigo-800 border-2 border-white hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-start mb-2">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-20 w-20 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-2xl font-bold">Company Name 12</h2>
                         <p class="text-lg font-medium text-yellow-300 outline-2">

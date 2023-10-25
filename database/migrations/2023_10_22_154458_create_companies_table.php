@@ -17,15 +17,19 @@ return new class extends Migration
             $table->foreign('company_uid')->references('id')->on('recruiters');
             $table->string('company_logo')->default('default.png');
             $table->string('company_bg')->default('');
-            $table->text('company_name');
-            $table->text('company_description');
-            $table->text('company_industry');
-            $table->text('company_country');
-            $table->text('company_address');
-            $table->text('company_website');
-            $table->text('company_facebook');
-            $table->text('company_twitter');
-            $table->text('company_instagram');
+            $table->string('company_name')->nullable();
+            $table->string('company_email')->nullable();
+            $table->text('company_description')->nullable();
+            $table->integer('company_phone')->nullable();
+            $table->string('company_founded')->nullable();
+            $table->string('company_categories')->nullable();
+            $table->integer('company_size')->nullable();
+            $table->text('company_address')->nullable();
+            $table->string('company_website')->nullable();
+            $table->string('company_facebook')->nullable();
+            $table->string('company_linkedin')->nullable();
+            $table->string('company_twitter')->nullable();
+            $table->string('company_instagram')->nullable();
             $table->integer('status')->default(0); // 0 = active; 1 = archive
             $table->timestamps();
         });

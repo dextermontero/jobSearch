@@ -67,7 +67,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-center justify-center place-content-center">
             <div class="bg-white rounded-md shadow-sm p-4 border-2 hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-center justify-center">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-xl font-bold text-gray-600">Company Name 1</h2>
                     </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="bg-white rounded-md shadow-sm p-4 border-2 hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-center justify-center">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-xl font-bold text-gray-600">Company Name 2</h2>
                     </div>
@@ -135,7 +135,7 @@
             </div>
             <div class="bg-white rounded-md shadow-sm p-4 border-2 hover:border-indigo-800 transition duration-300">
                 <div class="inline-flex items-center justify-center">
-                    <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3 shadow-sm" alt="Company Logo">
+                    <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3 shadow-sm" alt="Company Logo">
                     <div class="mb-1">
                         <h2 class="text-xl font-bold text-gray-600">Company Name 3</h2>
                     </div>

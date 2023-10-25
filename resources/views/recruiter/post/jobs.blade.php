@@ -10,7 +10,7 @@
                             <div class="mb-4">
                                 <div class="flex flex-col">
                                     <div class="mb-4 flex justify-center">
-                                        <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-36 w-36">
+                                        <img src="{{ asset('assets/company/logo/default.png') }}" class="h-36 w-36">
                                     </div>
                                     <div class="col-span-2 w-full">
                                         <div class="mb-4">

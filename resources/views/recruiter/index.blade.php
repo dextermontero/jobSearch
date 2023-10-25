@@ -12,9 +12,34 @@
                         <div class="mb-10">
                             <p class="font-normal text-3xl mt-0 md:mt-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                         </div>
-                        <form>
-                            <button type="submit" class="bg-indigo-700 text-white px-3 py-4 rounded-md font-medium w-full md:w-56">Post a job</button>
-                        </form>
+                        @if (Auth::guard('recruiter')->check())
+                            <a href="/post/job" class="bg-indigo-700 text-white px-3 py-4 rounded-md font-medium w-full md:w-56">Post a job</a>
+                        @else
+                            <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-indigo-700 text-white px-3 py-4 rounded-md font-medium w-full md:w-56">Post a job</button>
+                            <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-md max-h-full">
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                        <div class="p-6 text-center">
+                                            <h3 class="inline-flex items-center justify-center text-xl font-semibold text-gray-900 mb-4">
+                                                <i class="fa-solid fa-circle-info mr-3 text-blue-700"></i>
+                                                Ooppss
+                                            </h3>
+                                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">You cannot create a hiring post without Sign In, <b>Sign In First!</b></h3>
+                                            <a href="/recruiter/login" data-modal-hide="popup-modal"  class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                Sign In now
+                                            </a>
+                                            <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        @endif
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">

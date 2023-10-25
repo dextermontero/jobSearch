@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruiterController;
@@ -81,7 +82,8 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter');
     
     // Post Routes //
-
+    // Add Company
+    Route::post('/addCompany', [CompanyController::class, 'AddCompany'])->name('recruiter_addCompany')->middleware('auth:recruiter');
     // Login , Register
     Route::post('/login/account', [RecruiterController::class, 'Login'])->name('recruiter_account');
     Route::post('/register/create', [RecruiterController::class, 'Create'])->name('recruiter_create');

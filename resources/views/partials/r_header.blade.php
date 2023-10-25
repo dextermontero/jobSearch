@@ -12,6 +12,8 @@
             @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js'])
             <link href="{{ asset('assets/css/quill.snow.css') }}" rel="stylesheet" />
             <script src="{{ asset('assets/js/quill.min.js') }}"></script>
+        @elseif(url()->current() === route('recruiter_createCompany'))
+            @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js', 'resources/js/datepicker.js'])
         @else
             @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js'])
         @endif
