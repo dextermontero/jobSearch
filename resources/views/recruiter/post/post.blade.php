@@ -59,7 +59,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -108,7 +108,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -157,7 +157,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -199,7 +199,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -248,7 +248,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -297,7 +297,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -353,7 +353,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -402,7 +402,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -451,7 +451,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -500,7 +500,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -549,7 +549,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -598,7 +598,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -654,7 +654,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -703,7 +703,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -752,7 +752,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -801,7 +801,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -850,7 +850,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -899,7 +899,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -957,7 +957,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -999,7 +999,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -1041,7 +1041,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -1083,7 +1083,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -1125,7 +1125,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -1167,7 +1167,7 @@
                             <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                 <div class="flex flex-col items-start justify-start px-8 py-4">
                                     <div class="inline-flex items-start mb-2">
-                                        <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                                        <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                                         <div class="mb-4">
                                             <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">Credit Analyst</h2>
                                             <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -1214,3 +1214,5 @@
         @include('partials.r_footer')
     </div>
 </div>
+</body>
+</html>

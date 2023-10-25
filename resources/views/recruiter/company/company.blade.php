@@ -54,7 +54,7 @@
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         <a href="#1" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name asdasdasdas asdasdsadasdas asdas</h2>
@@ -69,7 +69,7 @@
                                         </a>
                                         <a href="#2" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -84,7 +84,7 @@
                                         </a>
                                         <a href="#3" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -99,7 +99,7 @@
                                         </a>
                                         <a href="#4" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -114,7 +114,7 @@
                                         </a>
                                         <a href="#5" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -172,7 +172,7 @@
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         <a href="#1" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name asdasdasdas asdasdsadasdas asdas</h2>
@@ -187,7 +187,7 @@
                                         </a>
                                         <a href="#2" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -202,7 +202,7 @@
                                         </a>
                                         <a href="#3" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -217,7 +217,7 @@
                                         </a>
                                         <a href="#4" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -232,7 +232,7 @@
                                         </a>
                                         <a href="#5" class="group">
                                             <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
+                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
                                                 <div class="flex justify-between items-center w-full">
                                                     <div class="">
                                                         <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
@@ -260,5 +260,6 @@
         </div>
         @include('partials.r_footer')
     </div>
-
 </div>
+</body>
+</html>

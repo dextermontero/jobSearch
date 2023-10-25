@@ -95,7 +95,7 @@
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-md group-hover:bg-gray-100 transition duration-[300ms]">
                             <div class="px-2 py-2 md:px-3 md:py-4 text-gray-600 w-full md:w-[60%]">
                                 <div class="inline-flex items-center whitespace-wrap">
-                                    <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-24 w-24 mr-2">
+                                    <img src="{{ asset('assets/company/logo/default.png') }}" class="h-24 w-24 mr-2">
                                     <div class="flex flex-col">
                                         <p class="text-2xl font-bold group-hover:text-indigo-700">Dexter Montero</p>
                                         <p class="text-lg font-medium text-indigo-600">Social Media Marketing</p>
@@ -146,7 +146,7 @@
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-md group-hover:bg-gray-100 transition duration-[300ms]">
                             <div class="px-2 py-2 md:px-3 md:py-4 text-gray-600 w-full md:w-[60%]">
                                 <div class="inline-flex items-center whitespace-wrap">
-                                    <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-24 w-24 mr-2">
+                                    <img src="{{ asset('assets/company/logo/default.png') }}" class="h-24 w-24 mr-2">
                                     <div class="flex flex-col">
                                         <p class="text-2xl font-bold group-hover:text-indigo-700">Dexter Montero</p>
                                         <p class="text-lg font-medium text-indigo-600">Social Media Marketing</p>
@@ -197,7 +197,7 @@
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-md group-hover:bg-gray-100 transition duration-[300ms]">
                             <div class="px-2 py-2 md:px-3 md:py-4 text-gray-600 w-full md:w-[60%]">
                                 <div class="inline-flex items-center whitespace-wrap">
-                                    <img src="{{ asset('assets/job/company_logo/default.png') }}" class="h-24 w-24 mr-2">
+                                    <img src="{{ asset('assets/company/logo/default.png') }}" class="h-24 w-24 mr-2">
                                     <div class="flex flex-col">
                                         <p class="text-2xl font-bold group-hover:text-indigo-700">Dexter Montero</p>
                                         <p class="text-lg font-medium text-indigo-600">Social Media Marketing</p>
@@ -280,3 +280,5 @@
         @include('partials.r_footer')
     </div>
 </div>
+</body>
+</html>
