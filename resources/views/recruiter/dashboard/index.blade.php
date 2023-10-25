@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <hr class="hidden md:mb-4 md:block">
-                <div class="px-2 py-2">
+                <div class="px-2 py-2 divide-y">
                     <div class="group">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-md group-hover:bg-gray-100 transition duration-[300ms]">
                             <div class="px-2 py-2 md:px-3 md:py-4 text-gray-600 w-full md:w-[60%]">
@@ -141,7 +141,6 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
                     <div class="group">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-md group-hover:bg-gray-100 transition duration-[300ms]">
                             <div class="px-2 py-2 md:px-3 md:py-4 text-gray-600 w-full md:w-[60%]">
@@ -192,7 +191,6 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
                     <div class="group">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center rounded-md group-hover:bg-gray-100 transition duration-[300ms]">
                             <div class="px-2 py-2 md:px-3 md:py-4 text-gray-600 w-full md:w-[60%]">

@@ -68,7 +68,7 @@
     <div class="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-center p-6">
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
                     <h2 class="text-2xl font-semibold">Credit Analyst</h2>
                     <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -90,7 +90,7 @@
         </a>
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
                     <h2 class="text-2xl font-semibold">IT Manager</h2>
                     <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -111,7 +111,7 @@
         </a>
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
                     <h2 class="text-2xl font-semibold">Sr. DevOps</h2>
                     <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -132,7 +132,7 @@
         </a>
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
                     <h2 class="text-2xl font-semibold">Associate Software Engineer</h2>
                     <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -153,7 +153,7 @@
         </a>
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
                     <h2 class="text-2xl font-semibold">Data Engineer</h2>
                     <p class="text-sm font-medium text-gray-700">Company Name</p>
@@ -174,7 +174,7 @@
         </a>
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/job/company_logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
+                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
                     <h2 class="text-2xl font-semibold">SQL Developer</h2>
                     <p class="text-sm font-medium text-gray-700">Company Name</p>
