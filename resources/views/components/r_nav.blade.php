@@ -16,7 +16,7 @@
                     <div class="flex items-center ml-3">
                         <div class="inline-flex items-center">
                             @if (url()->current() != route('recruiter_post'))
-                                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', 0, 'AND', 'recruiters.id', '=', Auth::id())->count() > 0)
+                                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->count() > 0)
                                     <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">
                                         Create Job a post
                                     </a>
@@ -117,12 +117,12 @@
                     {{-- <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span> --}}
                 </a>
             </li>
-            @if (url()->current() === route('recruiter_companyinfo'))
+            @if (url()->current() === route('recruiter_companyAll'))
                 <li class="bg-gray-700 rounded-lg border-r-2 border-l-2 border-indigo-700">
             @else
                 <li class="border-r-2 border-l-2 border-gray-900">
             @endif
-                <a href="{{ route('recruiter_companyinfo') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
+                <a href="{{ route('recruiter_companyAll') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
                     <i class="fa-solid fa-building flex-shrink-0 w-5 h-5 text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Company</span>
                     {{-- <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Recruiter;
@@ -34,12 +35,26 @@ class RecruiterController extends Controller
         return view('recruiter.post.jobs');
     }
 
-    public function showCompanyInfo() {
-        return view('recruiter.company.company');
+    public function showCompanyAll() {
+        $companies = Companies::select('companies.id', 'companies.company_uid', 'companies.company_logo', 'companies.company_name', 'companies.status')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
+        return view('recruiter.company.company', compact('companies'));
+        
     }
 
     public function createCompany() {
         return view('recruiter.company.create');
+    }
+
+    public function showCompanyID($id){
+        $companiesInfo = Companies::where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->get();
+        return view('recruiter.company.view', compact('companiesInfo'));
+    }
+
+
+    public function archiveCompanyID($id){
+        $dttm = now();
+        Companies::where('company_uid', '=', Auth::id())->where('id', '=', $id)->update(['status' => '1', 'updated_at' => $dttm]);
+        return redirect()->route('recruiter_companyAll');
     }
     
     public function Login(Request $request){
@@ -87,7 +102,7 @@ class RecruiterController extends Controller
 
     public function destroy(){
         Auth::guard('recruiter')->logout();
-        return redirect()->route('recruiter_login')->with('msg', '');
+        return redirect()->route('recruiter_login');
         //return redirect()->route('recruiter_login');
     }
 }

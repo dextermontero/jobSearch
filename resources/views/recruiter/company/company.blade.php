@@ -3,35 +3,55 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="rounded">
-                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', 0, 'AND', 'recruiters.id', '=', Auth::id())->count() > 0)
+                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->count() > 0)
                     <div class="flex justify-end mb-4">
                         <button type="button" data-modal-target="add-more-company" data-modal-toggle="add-more-company" class="bg-blue-500 px-3 py-2 text-white rounded-lg">
                             <i class="fa-solid fa-plus"></i>
                             Add Company
                         </button>
                     </div>
-                    <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                            </svg>
-                        </p>
-                    </div>
 
+                    @foreach ($companies as $company)
+                    <div class="group">
+                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between min-h-min mb-4 rounded bg-gray-50 p-4 group-hover:bg-gray-100 transition duration-100">
+                            <div class="">
+                                <div class="inline-flex items-center">
+                                    <img src="{{ asset('assets/company/logo/'. $company->company_logo) }}" class="h-32 w-32 mr-3 rounded-md" alt="{{ $company->company_name}}">
+                                    <div class="flex flex-col">
+                                        <h2 class="text-2xl font-bold font-poppins text-gray-700">{{ $company->company_name}}</h2>
+                                        {{-- <p class="text-sm"><i class="fa-solid fa-location-dot mr-2"></i>Philippines</p> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-3 py-1 md:px-3 md:py-4 mb-2 flex items-center justify-end w-full md:w-[20%]">
+                                <a href="/recruiter/company/{{ $company->id }}" data-tooltip-target="view_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <div id="view_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        View Details
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </a>
+                                <a href="/recruiter/company/{{ $company->id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <div id="edit_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        Edit Details
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </a>
+                                <form action="/recruiter/company/{{ $company->id }}" method="POST">
+                                    @csrf
+                                    <button type="submit" id="archive" name="archive" data-tooltip-target="archive_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-500 group-hover:bg-white"><i class="fa-solid fa-box-archive"></i></button>
+                                    <div id="archive_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-red-500">Archive Company</span>
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    
                     <!-- Main modal -->
                     <div id="add-more-company" tabindex="-1" data-modal-backdrop="static" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-md max-h-full">
