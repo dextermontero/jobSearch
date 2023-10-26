@@ -14,6 +14,7 @@ export default {
         "./resources/js/*.{js,ts}",
         "./public/assets/css/*.css",
         "./public/assets/js/*.{js,ts,map}",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
     ],
 
     theme: {

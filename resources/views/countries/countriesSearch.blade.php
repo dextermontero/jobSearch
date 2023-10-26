@@ -58,11 +58,14 @@
                     </a>
                 @endforeach
             </div>
+            <div class="mt-4">
+                <?php echo $getCountry->links(); ?>
+            </div>
         @else
-            <div class="container mx-auto mb-10 mt-20">
-                <div class="flex items-center justify-center">
-                    <p class="font-mono text-gray-500 text-center text-4xl"> No Country data</p>
-                </div>
+            <div class="flex items-center justify-center h-[28rem] mb-4 rounded dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">
+                    No Country Data
+                </p>
             </div>
         @endif
     </div>
