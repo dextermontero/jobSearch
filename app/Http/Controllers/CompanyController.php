@@ -31,7 +31,8 @@ class CompanyController extends Controller
             'company_instagram' => ['required', 'string', 'min:2'],
         ]);
         if($request->hasFile('logo')){
-            $logoName = time().'_'.$request->logo->getClientOriginalName();  
+            $logoName = time().'_'.$request->logo->getClientOriginalName();
+            //$request->logo->storeAs('company/logo', $logoName);  
             $request->logo->move(public_path('assets/company/logo'), $logoName);
         }
         if($request->hasFile('cover')){

@@ -17,19 +17,6 @@ use App\Http\Controllers\RecruiterController;
 */
 require __DIR__.'/auth.php';
 
-/* Route::get('/', function () {
-    return view('welcome');
-});
- */
-/* Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-}); */
 /* ---------------------- Web ---------------------- */
 
 Route::get('/careers', function(){
@@ -77,11 +64,16 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     // Job Post
     Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
     Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
+
     // Company Info
-    Route::get('/company', [RecruiterController::class, 'showCompanyInfo'])->name('recruiter_companyinfo')->middleware('auth:recruiter');
-    Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter');
+    Route::get('/company', [RecruiterController::class, 'showCompanyAll'])->name('recruiter_companyAll')->middleware('auth:recruiter'); // SELECT *
+    Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter'); // CREATE COMPANY
+    Route::get('/company/{id}', [RecruiterController::class, 'showCompanyID'])->name('recruiter_companyID')->middleware('auth:recruiter'); // SELECT BY ID
+    //Route::get('/company/{id}', [RecruiterController::class, 'showCompanyID'])->name('recruiter_companyID')->middleware('auth:recruiter'); // EDIT BY ID
+    Route::post('/company/{id}', [RecruiterController::class, 'archiveCompanyID'])->name('recruiter_archiveCompanyID')->middleware('auth:recruiter'); // ARCHIVE BY ID
     
     // Post Routes //
+
     // Add Company
     Route::post('/addCompany', [CompanyController::class, 'AddCompany'])->name('recruiter_addCompany')->middleware('auth:recruiter');
     // Login , Register

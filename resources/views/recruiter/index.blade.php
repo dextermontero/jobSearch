@@ -73,21 +73,21 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 place-content-center">
                             <div class="text-center py-5 px-6 text-gray-800 font-poppins">
                                 <div class="mb-5 flex flex-col justify-center place-items-center">
-                                    <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-20 w-20 rounded-full mb-5 shadow-sm" alt="Why Picture">
+                                    <img src="{{ asset('assets/company/logo/default.png')}}" class="h-20 w-20 rounded-full mb-5 shadow-sm" alt="Why Picture">
                                     <h3 class="text-2xl">Lorem Ipsum</h3>
                                 </div>
                                 <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                             </div>
                             <div class="text-center py-5 px-6 text-gray-800 font-poppins">
                                 <div class="mb-5 flex flex-col justify-center place-items-center">
-                                    <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-20 w-20 rounded-full mb-5 shadow-sm" alt="Why Picture">
+                                    <img src="{{ asset('assets/company/logo/default.png')}}" class="h-20 w-20 rounded-full mb-5 shadow-sm" alt="Why Picture">
                                     <h3 class="text-2xl">Lorem Ipsum</h3>
                                 </div>
                                 <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                             </div>
                             <div class="text-center py-5 px-6 text-gray-800 font-poppins">
                                 <div class="mb-5 flex flex-col justify-center place-items-center">
-                                    <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-20 w-20 rounded-full mb-5 shadow-sm" alt="Why Picture">
+                                    <img src="{{ asset('assets/company/logo/default.png')}}" class="h-20 w-20 rounded-full mb-5 shadow-sm" alt="Why Picture">
                                     <h3 class="text-2xl">Lorem Ipsum</h3>
                                 </div>
                                 <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="inline-flex items-center">
                                         <div class="inline-flex items-center text-gray-700">
-                                            <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
+                                            <img src="{{ asset('assets/company/logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
                                             <p class="ml-3 mr-3 whitespace-nowrap font-medium">Lorem Ipsum</p>
                                             <div class="border-r-4 border-indigo-700">&nbsp;</div>
                                             <p class="ml-3 truncate">CEO at Microsoft</p>
@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="inline-flex items-center">
                                         <div class="inline-flex items-center text-gray-700">
-                                            <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
+                                            <img src="{{ asset('assets/company/logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
                                             <p class="ml-3 mr-3 whitespace-nowrap font-medium">Lorem Ipsum 2</p>
                                             <div class="border-r-4 border-indigo-700">&nbsp;</div>
                                             <p class="ml-3 truncate">CEO at Microsoft</p>
@@ -144,7 +144,7 @@
                                     </div>
                                     <div class="inline-flex items-center">
                                         <div class="inline-flex items-center text-gray-700">
-                                            <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
+                                            <img src="{{ asset('assets/company/logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
                                             <p class="ml-3 mr-3 whitespace-nowrap font-medium">Lorem Ipsum 3</p>
                                             <div class="border-r-4 border-indigo-700">&nbsp;</div>
                                             <p class="ml-3 truncate">CEO at Microsoft</p>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="inline-flex items-center">
                                         <div class="inline-flex items-center text-gray-700">
-                                            <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
+                                            <img src="{{ asset('assets/company/logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
                                             <p class="ml-3 mr-3 whitespace-nowrap font-medium">Lorem Ipsum 4</p>
                                             <div class="border-r-4 border-indigo-700">&nbsp;</div>
                                             <p class="ml-3 truncate">CEO at Microsoft</p>
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="inline-flex items-center">
                                         <div class="inline-flex items-center text-gray-700">
-                                            <img src="{{ asset('assets/job/company_logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
+                                            <img src="{{ asset('assets/company/logo/default.png')}}" class="h-12 rounded-full shadowm-sm" alt="Profile Name">
                                             <p class="ml-3 mr-3 whitespace-nowrap font-medium">Lorem Ipsum 5</p>
                                             <div class="border-r-4 border-indigo-700">&nbsp;</div>
                                             <p class="ml-3 truncate">CEO at Microsoft</p>
