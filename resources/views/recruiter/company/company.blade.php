@@ -10,7 +10,6 @@
                             Add Company
                         </button>
                     </div>
-
                     @foreach ($companies as $company)
                     <div class="group">
                         <div class="flex flex-col md:flex-row items-start md:items-center justify-between min-h-min mb-4 rounded bg-gray-50 p-4 group-hover:bg-gray-100 transition duration-100">
@@ -31,7 +30,7 @@
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="/recruiter/company/{{ $company->id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
+                                <a href="/recruiter/company/edit/{{ $company->id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     <div id="edit_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                         Edit Details
@@ -46,7 +45,6 @@
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -158,6 +156,7 @@
                         </div>
                     </div>
                 @else
+                {{-- NO DATA START HERE --}}
                     <div class="flex justify-end">
                         <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-green-500 px-3 py-2 text-white rounded-lg">
                             <i class="fa-solid fa-magnifying-glass"></i>

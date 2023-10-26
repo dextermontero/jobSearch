@@ -38,7 +38,6 @@ class RecruiterController extends Controller
     public function showCompanyAll() {
         $companies = Companies::select('companies.id', 'companies.company_uid', 'companies.company_logo', 'companies.company_name', 'companies.status')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
         return view('recruiter.company.company', compact('companies'));
-        
     }
 
     public function createCompany() {
@@ -46,10 +45,22 @@ class RecruiterController extends Controller
     }
 
     public function showCompanyID($id){
-        $companiesInfo = Companies::where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->get();
-        return view('recruiter.company.view', compact('companiesInfo'));
+        $idCheck = DB::table('companies')->where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->exists();
+        $companiesInfo = Companies::where('status', '=', '0')->where('id', '=', $id)->get();
+        if($idCheck){
+            return view('recruiter.company.view', compact('companiesInfo'));
+        }
+        return redirect()->route('recruiter_companyAll');
     }
 
+    public function showEditCompanyID($id){
+        $idCheck = DB::table('companies')->where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->exists();
+        $editCompaniesInfo = Companies::where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->get();
+        if($idCheck){
+            return view('recruiter.company.edit', compact('editCompaniesInfo'));
+        }
+        return redirect()->route('recruiter_companyAll');
+    }
 
     public function archiveCompanyID($id){
         $dttm = now();
@@ -58,7 +69,6 @@ class RecruiterController extends Controller
     }
     
     public function Login(Request $request){
-
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']

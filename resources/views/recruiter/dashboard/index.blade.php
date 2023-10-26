@@ -110,34 +110,37 @@
                                 <span class="text-gray-600 rounded-full font-medium tracking-wider group-hover:text-gray-800">November 9, 2023</span>
                             </div>
                             <div class="px-3 py-1 md:px-3 md:py-4 mb-2 flex items-center justify-start w-full md:w-[20%]">
-                                <a href="#" data-tooltip-target="approve_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="approve_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
                                     <i class="fa-solid fa-check"></i>
                                     <div id="approve_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Approve Applicantion
+                                        <span class="text-teal-400">Approve Applicantion</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="reject_1"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="reject_1"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-400 group-hover:bg-white">
                                     <i class="fa-solid fa-rotate"></i>
                                     <div id="reject_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Reject Applicantion
+                                        <span class="text-red-400">Reject Applicantion</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="download_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="download_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
                                     <i class="fa-solid fa-download"></i>
                                     <div id="download_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Download CS
+                                        <span class="text-blue-400">Download CV</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="remove_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
-                                    <i class="fa-solid fa-x"></i>
-                                    <div id="remove_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Remove
+                                <form >
+                                    @csrf
+                                    <button type="submit" id="archive" name="archive" data-tooltip-target="archive_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-500 group-hover:bg-white">
+                                        <i class="fa-solid fa-x"></i>
+                                    </button>
+                                    <div id="archive_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-red-500">Remove</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
-                                </a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -160,34 +163,37 @@
                                 <span class="text-gray-600 rounded-full font-medium tracking-wider group-hover:text-gray-800">November 9, 2023</span>
                             </div>
                             <div class="px-3 py-1 md:px-3 md:py-4 mb-2 flex items-center justify-start w-full md:w-[20%]">
-                                <a href="#" data-tooltip-target="approve_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="approve_2" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
                                     <i class="fa-solid fa-check"></i>
-                                    <div id="approve_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Approve Applicantion
+                                    <div id="approve_2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-teal-400">Approve Applicantion</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="reject_1"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
-                                    <i class="fa-solid fa-arrow-rotate-left"></i>
-                                    <div id="reject_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Undo Approved
+                                <a href="#" data-tooltip-target="reject_2"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-400 group-hover:bg-white">
+                                    <i class="fa-solid fa-rotate"></i>
+                                    <div id="reject_2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-red-400">Reject Applicantion</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="download_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="download_2" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
                                     <i class="fa-solid fa-download"></i>
-                                    <div id="download_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Download CS
+                                    <div id="download_2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-blue-400">Download CV</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="remove_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
-                                    <i class="fa-solid fa-x"></i>
-                                    <div id="remove_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Remove
+                                <form >
+                                    @csrf
+                                    <button type="submit" id="archive" name="archive" data-tooltip-target="archive_2" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-500 group-hover:bg-white">
+                                        <i class="fa-solid fa-x"></i>
+                                    </button>
+                                    <div id="archive_2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-red-500">Remove</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
-                                </a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -210,34 +216,37 @@
                                 <span class="text-gray-600 rounded-full font-medium tracking-wider group-hover:text-gray-800">November 9, 2023</span>
                             </div>
                             <div class="px-3 py-1 md:px-3 md:py-4 mb-2 flex items-center justify-start w-full md:w-[20%]">
-                                <a href="#" data-tooltip-target="approve_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="approve_3" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
                                     <i class="fa-solid fa-check"></i>
-                                    <div id="approve_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Approve Applicantion
+                                    <div id="approve_3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-teal-400">Approve Applicantion</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="reject_1"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="reject_3"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-400 group-hover:bg-white">
                                     <i class="fa-solid fa-rotate"></i>
-                                    <div id="reject_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Reject Applicantion
+                                    <div id="reject_3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-red-400">Reject Applicantion</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="download_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
+                                <a href="#" data-tooltip-target="download_3" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
                                     <i class="fa-solid fa-download"></i>
-                                    <div id="download_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Download CS
+                                    <div id="download_3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-blue-400">Download CV</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="remove_1" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 ">
-                                    <i class="fa-solid fa-x"></i>
-                                    <div id="remove_1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Remove
+                                <form>
+                                    @csrf
+                                    <button type="submit" id="archive" name="archive" data-tooltip-target="archive_3" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-500 group-hover:bg-white">
+                                        <i class="fa-solid fa-x"></i>
+                                    </button>
+                                    <div id="archive_3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                        <span class="text-red-500">Remove</span>
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
-                                </a>
+                                </form>
                             </div>
                         </div>
                     </div>
