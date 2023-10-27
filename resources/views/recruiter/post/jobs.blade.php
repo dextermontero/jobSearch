@@ -1,10 +1,16 @@
 @include("partials.r_header", [$title])
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <div class="min-h-screen mt-5">
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="bg-gray-50 rounded p-4">
                 <div class="mb-4">
                     <h2 class="text-2xl font-poppins font-bold tracking-wider mb-4">Compose Job Hiring</h2>
+                    <select class="js-example-basic-single" name="state">
+                        <option value="AL">Alabama</option>
+                          ...
+                        <option value="WY">Wyoming</option>
+                      </select>
                     <form class="mb-20">
                         <div class="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 p-2">
                             <div class="mb-4">
@@ -81,5 +87,14 @@
           </script>
     </div>
 </div>
+
+
+<script src="{{ asset('assets/js/select2.full.min.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>
 </body>
 </html>

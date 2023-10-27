@@ -9,7 +9,10 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'public/assets/css/quill.snow.css',
+                'public/assets/css/select2.min.css',
+                'public/assets/js/jquery.min.js',
                 'public/assets/js/quill.min.js',
+                'public/assets/js/select2.full.min.js',
             ],
             refresh: true,
         }),
@@ -17,6 +20,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '~fontawesome': path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free'),
+            '$': 'jQuery',
         }
     },
 });
