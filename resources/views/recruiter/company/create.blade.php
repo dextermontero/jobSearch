@@ -79,12 +79,12 @@
                                         <label for="company_categories" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Company Categories</label>
                                         <select id="company_categories" name="company_categories" value="{{ old('company_categories') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5">
                                             <option selected disabled>Select Category</option>
-                                            <option value="Sole Proprietorships">Sole Proprietorships</option>
-                                            <option value="Partnerships">Partnerships</option>
-                                            <option value="Corporations">Corporations</option>
-                                            <option value="Limited Liability Companies">Limited Liability Companies</option>
-                                            <option value="S-Corporations">S-Corporations</option>
-                                            <option value="Nonprofit Organizations">Nonprofit Organizations</option>
+                                            <option {{ old('company_categories')=='Sole Proprietorships' ? 'selected' : ''  }} value="Sole Proprietorships">Sole Proprietorships</option>
+                                            <option {{ old('company_categories')=='Partnerships' ? 'selected' : ''  }} value="Partnerships">Partnerships</option>
+                                            <option {{ old('company_categories')=='Corporations' ? 'selected' : ''  }} value="Corporations">Corporations</option>
+                                            <option {{ old('company_categories')=='Limited Liability Companies' ? 'selected' : ''  }} value="Limited Liability Companies">Limited Liability Companies</option>
+                                            <option {{ old('company_categories')=='S-Corporations' ? 'selected' : ''  }} value="S-Corporations">S-Corporations</option>
+                                            <option {{ old('company_categories')=='Nonprofit Organizations' ? 'selected' : ''  }} value="Nonprofit Organizations">Nonprofit Organizations</option>
                                         </select>
                                         @error('company_categories')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>

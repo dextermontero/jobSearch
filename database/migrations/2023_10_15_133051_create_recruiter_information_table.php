@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number', '15')->nullable();
             $table->text('address')->nullable();
+            $table->integer('archive')->default(0); // 0 = archive; 1 = active
             $table->timestamps();
-            $table->integer('archive')->default(0);
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Companies;
+use App\Models\CompanyList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Recruiter;
@@ -36,10 +37,10 @@ class RecruiterController extends Controller
     }
 
     public function showCompanyAll() {
-        $allCompany = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('status', '0')->count();
-        $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('status', '0')->where('recruiters.id', Auth::id())->count();
-        $getAllCompany = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('status', '0')->inRandomOrder()->get();
-        $companies = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
+        $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
+        $companies = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '=', '1')->where('companies.recruiter_id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
+        $allCompany = CompanyList::where('company_lists.status', '1')->count(); // count all companies
+        $getAllCompany = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('company_lists.status', '1')->inRandomOrder()->get(); // get all companies data and by random 
         return view('recruiter.company.company', compact('companies', 'allCompany', 'getAllCompany', 'companyCount'));
     }
 
@@ -48,8 +49,8 @@ class RecruiterController extends Controller
     }
 
     public function showCompanyID($id){
-        $idCheck = DB::table('companies')->where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->exists();
-        $companiesInfo = Companies::where('status', '=', '0')->where('id', '=', $id)->get();
+        $idCheck = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->exists();
+        $companiesInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->get();
         if($idCheck){
             return view('recruiter.company.view', compact('companiesInfo'));
         }
@@ -57,8 +58,8 @@ class RecruiterController extends Controller
     }
 
     public function showEditCompanyID($id){
-        $idCheck = DB::table('companies')->where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->exists();
-        $editCompaniesInfo = Companies::where('status', '=', '0')->where('company_uid', '=', Auth::id())->where('id', '=', $id)->get();
+        $idCheck = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->exists();
+        $editCompaniesInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->get();
         if($idCheck){
             return view('recruiter.company.edit', compact('editCompaniesInfo'));
         }
@@ -110,7 +111,7 @@ class RecruiterController extends Controller
             ]
         ]);
 
-        return redirect()->route('recruiter_login');
+        return redirect()->route('recruiter_dashboard');
     }
 
     public function destroy(){

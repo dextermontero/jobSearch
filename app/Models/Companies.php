@@ -14,22 +14,8 @@ class Companies extends Model
     protected $table = 'companies';
     
     protected $fillable = [
-        'company_uid',
-        'company_logo',
-        'company_bg',
-        'company_name',
-        'company_email',
-        'company_description',
-        'company_phone',
-        'company_founded',
-        'company_categories',
-        'company_size',
-        'company_address',
-        'company_website',
-        'company_facebook',
-        'company_linkedin',
-        'company_twitter',
-        'company_instagram',
+        'company_id',
+        'recruiter_id',
         'status',
     ];
 }
