@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();
             $table->text('company_description')->nullable();
-            $table->integer('company_phone')->nullable();
+            $table->bigInteger('company_phone')->nullable();
             $table->string('company_founded')->nullable();
             $table->string('company_categories')->nullable();
-            $table->integer('company_size')->nullable();
+            $table->bigInteger('company_size')->nullable();
             $table->text('company_address')->nullable();
             $table->string('company_website')->nullable();
             $table->string('company_facebook')->nullable();

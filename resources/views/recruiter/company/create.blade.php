@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_phone" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Phone Number</label>
-                                        <input type="text" id="company_phone" name="company_phone" value="{{ old('company_phone') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Mobile Number">
+                                        <input type="text" id="company_phone" name="company_phone" value="{{ old('company_phone') }}" maxlength="11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Mobile Number">
                                         @error('company_phone')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -77,14 +77,22 @@
                                     </div>
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_categories" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Company Categories</label>
-                                        <input type="text" id="company_categories" name="company_categories" value="{{ old('company_categories') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Categories">
+                                        <select id="company_categories" name="company_categories" value="{{ old('company_categories') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5">
+                                            <option selected disabled>Select Category</option>
+                                            <option value="Sole Proprietorships">Sole Proprietorships</option>
+                                            <option value="Partnerships">Partnerships</option>
+                                            <option value="Corporations">Corporations</option>
+                                            <option value="Limited Liability Companies">Limited Liability Companies</option>
+                                            <option value="S-Corporations">S-Corporations</option>
+                                            <option value="Nonprofit Organizations">Nonprofit Organizations</option>
+                                        </select>
                                         @error('company_categories')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_size" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Company Size</label>
-                                        <input type="text" id="company_size" name="company_size" value="{{ old('company_size') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="50-100">
+                                        <input type="text" id="company_size" name="company_size" value="{{ old('company_size') }}" maxlength="11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="50-100">
                                         @error('company_size')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -176,5 +184,16 @@
         }
     };
 </script>
+{{-- <script>
+$(document).ready(function() {
+    $(".company_categories").select2({
+        theme: "classic",
+        tags: true,
+        tokenSeparators: [','],
+        width: '100%'
+    });
+})
+
+</script> --}}
 </body>
 </html>
