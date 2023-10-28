@@ -3,7 +3,7 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="rounded">
-                @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->count() > 0)
+                @if ($companyCount > 0)
                     <div class="flex justify-end mb-4">
                         <button type="button" data-modal-target="add-more-company" data-modal-toggle="add-more-company" class="bg-blue-500 px-3 py-2 text-white rounded-lg">
                             <i class="fa-solid fa-plus"></i>
@@ -18,7 +18,7 @@
                                     <img src="{{ asset('assets/company/logo/'. $company->company_logo) }}" class="h-32 w-32 mr-3 rounded-md" alt="{{ $company->company_name}}">
                                     <div class="flex flex-col">
                                         <h2 class="text-2xl font-bold font-poppins text-gray-700">{{ $company->company_name}}</h2>
-                                        {{-- <p class="text-sm"><i class="fa-solid fa-location-dot mr-2"></i>Philippines</p> --}}
+                                        <p class="text-sm">{{ $company->company_categories }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -70,81 +70,48 @@
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
-                                        <a href="#1" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name asdasdasdas asdasdsadasdas asdas</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
+                                        @if ($allCompany > 0)
+                                            @foreach ($getAllCompany as $companyList)
+                                                @if ($companyList->company_uid === Auth::id())
+                                                    <div class="group">
+                                                        <div class="inline-flex items-center w-full group-hover:bg-gray-100 rounded-md p-1">
+                                                            <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
+                                                            <div class="flex justify-between items-center w-full">
+                                                                <div class="">
+                                                                    <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
+                                                                    <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
+                                                                </div>
+                                                                <div class="text-right text-blue-500 mr-3 p-2 whitespace-nowrap">
+                                                                    Added
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600 whitespace-nowrap">
-                                                        <i class="fa-solid fa-plus"></i>
-                                                        Add
-                                                    </div>
-                                                </div>
+                                                @else
+                                                    <a href="#1" class="group">
+                                                        <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
+                                                            <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
+                                                            <div class="flex justify-between items-center w-full">
+                                                                <div class="">
+                                                                    <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
+                                                                    <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
+                                                                </div>
+                                                                <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
+                                                                    <i class="fa-solid fa-plus"></i>
+                                                                    Add
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                @endif                                            
+                                            @endforeach
+                                        @else
+                                            <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
+                                                <p class="text-2xl text-gray-400 dark:text-gray-500">
+                                                    No Company Data
+                                                </p>
                                             </div>
-                                        </a>
-                                        <a href="#2" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#3" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#4" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#5" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
+                                        @endif
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -189,81 +156,31 @@
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
-                                        <a href="#1" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name asdasdasdas asdasdsadasdas asdas</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600 whitespace-nowrap">
-                                                        <i class="fa-solid fa-plus"></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#2" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
+                                        @if ($allCompany > 0)
+                                            @foreach ($getAllCompany as $companyList)
+                                            <a href="#1" class="group">
+                                                <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
+                                                    <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
+                                                    <div class="flex justify-between items-center w-full">
+                                                        <div class="">
+                                                            <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
+                                                            <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
+                                                        </div>
+                                                        <div class="text-right text-green-500 mr-3 p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                            Add
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </a>                                            
+                                            @endforeach
+                                        @else
+                                            <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
+                                                <p class="text-2xl text-gray-400 dark:text-gray-500">
+                                                    No Company Data
+                                                </p>
                                             </div>
-                                        </a>
-                                        <a href="#3" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#4" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#5" class="group">
-                                            <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                <img src="{{ asset('assets/company/logo/default.png') }}" class="h-16 w-16 mr-3" alt="">
-                                                <div class="flex justify-between items-center w-full">
-                                                    <div class="">
-                                                        <h2 class="text-gray-700 text-md font-medium">Company Name</h2>
-                                                        <span class="text-gray-600 text-sm font-poppins">Country</span>
-                                                    </div>
-                                                    <div class="text-right text-green-500 mr-3 group-hover:text-green-600">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                        Add
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
+                                        @endif
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">

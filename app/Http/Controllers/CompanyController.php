@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
 use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,24 +13,9 @@ class CompanyController extends Controller
 {
     
 
-    public function AddCompany(Request $request){
-        $request->validate([
-            'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'cover' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'company_name' => ['required', 'string', 'min:2'],
-            'company_email' => ['required', 'string', 'email', 'min:2'],
-            'company_about' => ['required', 'string', 'min:2'],
-            'company_phone' => ['required', 'numeric', 'min:2'],
-            'company_founded' => 'date',
-            'company_categories' => ['required', 'alpha', 'min:2'],
-            'company_size' => ['required', 'numeric', 'min:2'],
-            'company_address' => ['required', 'string', 'min:2'],
-            'company_website' => ['required', 'string', 'min:2'],
-            'company_facebook' => ['required', 'string', 'min:2'],
-            'company_linkedin' => ['required', 'string', 'min:2'],
-            'company_twitter' => ['required', 'string', 'min:2'],
-            'company_instagram' => ['required', 'string', 'min:2'],
-        ]);
+    public function AddCompany(CompanyRequest $request){
+        $request->validated();
+
         if($request->hasFile('logo')){
             $logoName = time().'_'.$request->logo->getClientOriginalName();
             //$request->logo->storeAs('company/logo', $logoName);  
@@ -63,6 +49,6 @@ class CompanyController extends Controller
             'created_at' => $dttm,
         ]);
 
-        return redirect()->route('recruiter_companyinfo');
+        return redirect()->route('recruiter_companyAll');
     } 
 }

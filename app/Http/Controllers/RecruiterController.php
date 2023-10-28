@@ -36,8 +36,11 @@ class RecruiterController extends Controller
     }
 
     public function showCompanyAll() {
-        $companies = Companies::select('companies.id', 'companies.company_uid', 'companies.company_logo', 'companies.company_name', 'companies.status')->join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
-        return view('recruiter.company.company', compact('companies'));
+        $allCompany = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('status', '0')->count();
+        $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('status', '0')->where('recruiters.id', Auth::id())->count();
+        $getAllCompany = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('status', '0')->inRandomOrder()->get();
+        $companies = Companies::join('recruiters', 'recruiters.id', '=', 'companies.company_uid')->where('companies.status', '=', '0')->where('recruiters.id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
+        return view('recruiter.company.company', compact('companies', 'allCompany', 'getAllCompany', 'companyCount'));
     }
 
     public function createCompany() {
