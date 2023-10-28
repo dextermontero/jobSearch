@@ -68,7 +68,7 @@ class RecruiterController extends Controller
 
     public function archiveCompanyID($id){
         $dttm = now();
-        Companies::where('company_uid', '=', Auth::id())->where('id', '=', $id)->update(['status' => '1', 'updated_at' => $dttm]);
+        Companies::where('recruiter_id', '=', Auth::id())->where('company_id', '=', $id)->update(['status' => '0', 'updated_at' => $dttm]);
         return redirect()->route('recruiter_companyAll');
     }
     

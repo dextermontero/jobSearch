@@ -23,21 +23,21 @@
                                 </div>
                             </div>
                             <div class="px-3 py-1 md:px-3 md:py-4 mb-2 flex items-center justify-end w-full md:w-[20%]">
-                                <a href="/recruiter/company/{{ $company->id }}" data-tooltip-target="view_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
+                                <a href="/recruiter/company/{{ $company->company_id }}" data-tooltip-target="view_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
                                     <i class="fa-solid fa-eye"></i>
                                     <div id="view_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                         View Details
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="/recruiter/company/edit/{{ $company->id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
+                                <a href="/recruiter/company/edit/{{ $company->company_id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     <div id="edit_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                         Edit Details
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <form action="/recruiter/company/{{ $company->id }}" method="POST">
+                                <form action="/recruiter/company/{{ $company->company_id }}" method="POST">
                                     @csrf
                                     <button type="submit" id="archive" name="archive" data-tooltip-target="archive_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-500 group-hover:bg-white"><i class="fa-solid fa-box-archive"></i></button>
                                     <div id="archive_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
