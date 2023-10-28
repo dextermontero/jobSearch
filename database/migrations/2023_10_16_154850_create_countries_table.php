@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('code');
+            $table->integer('status')->default(0); // 0 = archive; 1 = active
             $table->timestamps();
         });
     }

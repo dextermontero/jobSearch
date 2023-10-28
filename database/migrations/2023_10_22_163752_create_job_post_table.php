@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('job_post', function (Blueprint $table) {
             $table->id();
-            $table->integer('uid')->unsigned();
-            $table->integer('company_uid')->unsigned();
-            $table->foreign('uid')->references('id')->on('recruiters');
-            $table->foreign('company_uid')->references('id')->on('companies');
+            $table->integer('recruiter_id')->unsigned();
+            $table->foreign('recruiter_id')->references('id')->on('recruiters');
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->text('job_title');
             $table->text('description');
-            $table->integer('status')->default(0); // 0 = active; 1 = inactive; 2 = archived
+            $table->integer('status')->default(0); // 0 = inactive; 1 = active; 2 = archived
             $table->timestamps();
         });
     }

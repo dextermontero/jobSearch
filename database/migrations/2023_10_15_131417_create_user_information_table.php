@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_information', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('uid')->unsigned();
             $table->foreign('uid')->references('id')->on('users');
             $table->string('img_profile')->default('user_default.png');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone_number', '15')->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
-            $table->integer('archive')->default(0);
+            $table->integer('archive')->default(0); // 0 = archive; 1 = active
         });
     }
 

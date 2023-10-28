@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
 use App\Models\Companies;
-use Illuminate\Http\Request;
+use App\Models\CompanyList;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use Illuminate\Http\UploadedFile;
-
+use File;
 class CompanyController extends Controller
 {
     
 
     public function AddCompany(CompanyRequest $request){
+
         $request->validated();
 
         if($request->hasFile('logo')){
@@ -22,15 +21,15 @@ class CompanyController extends Controller
             $request->logo->move(public_path('assets/company/logo'), $logoName);
         }
         if($request->hasFile('cover')){
-            $time = time() + 1000;
-            $coverName = $time.'_'.$request->cover->getClientOriginalName();  
+            $timeCover = time() + 1000;
+            $coverName = $timeCover.'_'.$request->cover->getClientOriginalName();  
             $request->cover->move(public_path('assets/company/cover'), $coverName);
         }
 
         $dttm = now();
+        $status = '1';
 
-        Companies::create([
-            'company_uid' => Auth::id(),
+        $companyData = CompanyList::create([
             'company_logo' => $logoName,
             'company_bg' => $coverName,
             'company_name' => $request->company_name,
@@ -46,7 +45,23 @@ class CompanyController extends Controller
             'company_linkedin' => $request->company_linkedin,
             'company_twitter' => $request->company_twitter,
             'company_instagram' => $request->company_instagram,
+            'status' => $status,
             'created_at' => $dttm,
+        ]);
+
+        if(!$companyData->save()){
+            if(File::exists(public_path('assets/company/logo/'.$logoName))){
+                File::delete(public_path('assets/company/logo/'.$logoName));
+            }
+            if(File::exists(public_path('assets/company/cover/'.$coverName))){
+                File::delete(public_path('assets/company/cover/'.$coverName));
+            }
+        }
+
+        Companies::create([
+            'company_id' => $companyData['id'],
+            'recruiter_id' => Auth::id(),
+            'status' => $status,
         ]);
 
         return redirect()->route('recruiter_companyAll');

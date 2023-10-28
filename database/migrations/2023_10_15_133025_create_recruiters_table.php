@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recruiters', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('google')->default(0);
             $table->integer('apple')->default(0);
             $table->rememberToken();
+            $table->integer('archive')->default(0); // 0 = archive; 1 = active
             $table->timestamps();
-            $table->integer('archive')->default(0);
         });
     }
 

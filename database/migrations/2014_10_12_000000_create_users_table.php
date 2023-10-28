@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('apple')->default(0);
             $table->rememberToken();
             $table->timestamps();
-            $table->integer('archive')->default(0);
+            $table->integer('archive')->default(0); // 0 = archive; 1 = active
         });
     }
 

@@ -72,7 +72,7 @@
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         @if ($allCompany > 0)
                                             @foreach ($getAllCompany as $companyList)
-                                                @if ($companyList->company_uid === Auth::id())
+                                                @if ($companyList->recruiter_id === Auth::id())
                                                     <div class="group">
                                                         <div class="inline-flex items-center w-full group-hover:bg-gray-100 rounded-md p-1">
                                                             <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
@@ -166,7 +166,7 @@
                                                             <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
                                                             <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
                                                         </div>
-                                                        <div class="text-right text-green-500 mr-3 p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
+                                                        <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
                                                             <i class="fa-solid fa-plus"></i>
                                                             Add
                                                         </div>
