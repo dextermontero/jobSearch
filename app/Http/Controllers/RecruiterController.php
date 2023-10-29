@@ -17,7 +17,16 @@ class RecruiterController extends Controller
 {
 
     public function showDashboard(){
-        return view('recruiter.dashboard.index');
+        $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
+        return view('recruiter.dashboard.index', compact('companyCount'));
+    }
+
+    public function showAllApplicant(){
+        return view('recruiter.applicant.index');
+    }
+
+    public function showApplicant(){
+        return view('recruiter.applicant.view');
     }
 
     public function showRegister(){
@@ -38,7 +47,7 @@ class RecruiterController extends Controller
 
     public function showCompanyAll() {
         $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
-        $companies = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '=', '1')->where('companies.recruiter_id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get();
+        $companies = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '=', '1')->where('companies.recruiter_id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get(); // get all companies by recruiter
         $allCompany = CompanyList::where('company_lists.status', '1')->count(); // count all companies
         $getAllCompany = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('company_lists.status', '1')->inRandomOrder()->get(); // get all companies data and by random 
         return view('recruiter.company.company', compact('companies', 'allCompany', 'getAllCompany', 'companyCount'));

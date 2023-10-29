@@ -106,6 +106,12 @@
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('recruiter_applicant') }}" class="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-700 group">
+                    <i class="fa-solid fa-users flex-shrink-0 w-5 h-5 text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Applicants</span>
+                </a>
+            </li>
             @if (url()->current() === route('recruiter_post'))
                 <li class="bg-gray-700 rounded-lg border-r-2 border-l-2 border-indigo-700">
             @else

@@ -6,7 +6,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\Companies;
 use App\Models\CompanyList;
 use Illuminate\Support\Facades\Auth;
-use File;
+use Illuminate\Support\Facades\File;
 class CompanyController extends Controller
 {
     

@@ -59,8 +59,14 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::get('/login', [RecruiterController::class, 'showLogin'])->name('recruiter_login');
     Route::get('/register', [RecruiterController::class, 'showRegister'])->name('recruiter_register');
     Route::get('/logout', [RecruiterController::class, 'destroy'])->name('recruiter_logout');
+
     // Dashboard
     Route::get('/dashboard', [RecruiterController::class, 'showDashboard'])->name('recruiter_dashboard')->middleware('auth:recruiter');
+
+    // Applicant List
+    Route::get('/applicants', [RecruiterController::class, 'showAllApplicant'])->name('recruiter_applicant')->middleware('auth:recruiter');
+    Route::get('/applicants/{id}', [RecruiterController::class, 'showApplicant'])->name('recruiter_viewApplicant')->middleware('auth:recruiter');
+
     // Job Post
     Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
     Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
