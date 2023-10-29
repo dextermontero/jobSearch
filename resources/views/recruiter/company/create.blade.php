@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-span-2">
                                         <label for="company_about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About Company</label>
-                                        <textarea id="company_about" name="company_about" rows="4" value="{{ old('company_about') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-700 focus:border-indigo-700" placeholder="Company Background"></textarea>
+                                        <textarea id="company_about" name="company_about" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-700 focus:border-indigo-700" placeholder="Company Background">{{ old('company_about') }}</textarea>
                                         @error('company_about')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="col-span-2">
                                         <label for="company_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company Address</label>
-                                        <textarea id="company_address" name="company_address" rows="4" value="{{ old('company_address') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-700 focus:border-indigo-700" placeholder="Company Address"></textarea>
+                                        <textarea id="company_address" name="company_address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-700 focus:border-indigo-700" placeholder="Company Address">{{ old('company_address') }}</textarea>
                                         @error('company_address')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror

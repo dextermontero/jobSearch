@@ -1,11 +1,11 @@
 <ul class="inline-flex items-center font-medium">
     <li>
         @if (DB::table('companies')->join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '=', '1')->where('recruiters.id', '=', Auth('recruiter')->id())->count() > 0)
-            <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">
+            <a href="{{ route('recruiter_jobpost') }}" class="bg-indigo-600 text-lg px-4 py-2 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300">
                 Create Job a post
             </a>
         @else
-            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-indigo-600 text-lg px-4 py-1 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300" type="button">
+            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-indigo-600 text-lg px-4 py-2 mr-4 rounded-full text-gray-200 font-poppins font-medium hover:bg-indigo-700 hover:text-gray-300" type="button">
                 Create Job a post
             </button>
             <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
