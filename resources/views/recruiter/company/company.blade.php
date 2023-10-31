@@ -72,38 +72,21 @@
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         @if ($allCompany > 0)
                                             @foreach ($getAllCompany as $companyList)
-                                                @if ($companyList->recruiter_id === Auth::id())
-                                                    <div class="group">
-                                                        <div class="inline-flex items-center w-full group-hover:bg-gray-100 rounded-md p-1">
-                                                            <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
-                                                            <div class="flex justify-between items-center w-full">
-                                                                <div class="">
-                                                                    <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
-                                                                    <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
-                                                                </div>
-                                                                <div class="text-right text-blue-500 mr-3 p-2 whitespace-nowrap">
-                                                                    Added
-                                                                </div>
+                                                <a href="/recruiter/company/add/{{ $companyList->id}}" class="group">
+                                                    <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
+                                                        <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
+                                                        <div class="flex justify-between items-center w-full">
+                                                            <div class="">
+                                                                <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
+                                                                <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
+                                                            </div>
+                                                            <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
+                                                                <i class="fa-solid fa-plus"></i>
+                                                                Add
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @else
-                                                    <a href="#1" class="group">
-                                                        <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                            <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
-                                                            <div class="flex justify-between items-center w-full">
-                                                                <div class="">
-                                                                    <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
-                                                                    <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
-                                                                </div>
-                                                                <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
-                                                                    <i class="fa-solid fa-plus"></i>
-                                                                    Add
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                @endif                                            
+                                                </a>                                          
                                             @endforeach
                                         @else
                                             <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
@@ -157,8 +140,8 @@
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         @if ($allCompany > 0)
-                                            @foreach ($getAllCompany as $companyList)
-                                            <a href="#1" class="group">
+                                        @foreach ($getCompany as $companyList)
+                                            <a href="/recruiter/company/add/{{ $companyList->id}}" class="group">
                                                 <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
                                                     <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
                                                     <div class="flex justify-between items-center w-full">
@@ -172,8 +155,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>                                            
-                                            @endforeach
+                                            </a>                                          
+                                        @endforeach
                                         @else
                                             <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
                                                 <p class="text-2xl text-gray-400 dark:text-gray-500">
