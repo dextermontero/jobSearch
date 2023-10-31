@@ -33,7 +33,7 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_name" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Company Name</label>
-                                        <input type="text" id="company_name" name="company_name" value="{{ old('company_name') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Name">
+                                        <input type="text" id="company_name" name="company_name" value="{{ old('company_name') }}" onkeypress="return validateKeypress(alpha);" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Name">
                                         @error('company_name')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -41,20 +41,21 @@
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_email" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Company Email</label>
                                         <input type="text" id="company_email" name="company_email" value="{{ old('company_email') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Email">
+                                        <div id="emailreg"></div>
                                         @error('company_email')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-span-2">
                                         <label for="company_about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About Company</label>
-                                        <textarea id="company_about" name="company_about" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-700 focus:border-indigo-700" placeholder="Company Background">{{ old('company_about') }}</textarea>
+                                        <textarea id="company_about" name="company_about" rows="4"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-700 focus:border-indigo-700" placeholder="Company Background">{{ old('company_about') }}</textarea>
                                         @error('company_about')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_phone" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Phone Number</label>
-                                        <input type="text" id="company_phone" name="company_phone" value="{{ old('company_phone') }}" maxlength="11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Mobile Number">
+                                        <input type="text" id="company_phone" name="company_phone" value="{{ old('company_phone') }}" onkeypress="return validateKeypress(numeric);" maxlength="11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Company Mobile Number">
                                         @error('company_phone')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -70,7 +71,7 @@
                                                 <i class="fa-solid fa-calendar-days w-4 h-4 text-gray-500"></i>
                                             </div>
                                         @endif
-                                        <input datepicker-autohide datepicker type="text" id="company_founded" name="company_founded" value="{{ old('company_founded') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full pl-10 p-2.5" placeholder="Select Date">
+                                        <input datepicker-autohide datepicker type="text" id="company_founded" name="company_founded" onkeypress="return validateKeypress(date);" value="{{ old('company_founded') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full pl-10 p-2.5" placeholder="Select Date">
                                         @error('company_founded')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -92,7 +93,7 @@
                                     </div>
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="company_size" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Company Size</label>
-                                        <input type="text" id="company_size" name="company_size" value="{{ old('company_size') }}" maxlength="11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="50-100">
+                                        <input type="text" id="company_size" name="company_size" value="{{ old('company_size') }}" maxlength="11" onkeypress="return validateKeypress(numeric);" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="50-100">
                                         @error('company_size')
                                             <p class="pt-1 text-red-600 font-normal">{{ $message }}</p>
                                         @enderror
@@ -147,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="bg-green-600 p-4 rounded text-white font-medium mb-6 ml-auto mr-8">Save Company</button>
+                        <button type="submit" class="bg-green-600 p-4 rounded text-white font-medium mb-6 ml-auto mr-8" id="save">Save Company</button>
                     </div>
                 </form>
             </div>
@@ -184,16 +185,22 @@
         }
     };
 </script>
-{{-- <script>
+<script>
+var alpha = "[A-Za-z ]";
+var numeric = "[0-9]";
+var alphanumeric = "[A-Za-z0-9 ]";
+var date = "[0-9/ ]";
+function validateKeypress(validChars) { 
+    var validChars = new RegExp(validChars);
+    var keyChar = String.fromCharCode(event.which || event.keyCode); 
+    return validChars.test(keyChar) ? keyChar : false; 
+}
 $(document).ready(function() {
-    $(".company_categories").select2({
-        theme: "classic",
-        tags: true,
-        tokenSeparators: [','],
-        width: '100%'
+    $('#company_email').keyup(function(e){
+        var validEmail = /[a-zA-Z0-9._]+@(gmail|yahoo|myyahoo|outlook|hotmail|aol)+.[a-z-A-z]{2,}/.test(this.value) && this.value.length;
+        $('#emailreg').html(validEmail ? '':'<p class="pt-1 text-red-600 font-normal">Invalid email address</p>');
     });
-})
-
-</script> --}}
+});
+</script>
 </body>
 </html>

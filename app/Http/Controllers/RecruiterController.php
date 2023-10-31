@@ -15,7 +15,14 @@ use Illuminate\Validation\Validator;
 
 class RecruiterController extends Controller
 {
+    
+    private $dttm;
 
+    public function __construct()
+    {
+        $this->dttm = now();
+    }
+    
     public function showDashboard(){
         $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
         return view('recruiter.dashboard.index', compact('companyCount'));
@@ -47,10 +54,13 @@ class RecruiterController extends Controller
 
     public function showCompanyAll() {
         $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
+        $getCompany = CompanyList::where('status', '1')->get();
         $companies = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '=', '1')->where('companies.recruiter_id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get(); // get all companies by recruiter
+        
         $allCompany = CompanyList::where('company_lists.status', '1')->count(); // count all companies
-        $getAllCompany = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('company_lists.status', '1')->inRandomOrder()->get(); // get all companies data and by random 
-        return view('recruiter.company.company', compact('companies', 'allCompany', 'getAllCompany', 'companyCount'));
+        
+        $getAllCompany = CompanyList::select('company_lists.id', 'company_lists.company_logo', 'company_lists.company_name', 'company_lists.company_categories', 'companies.company_id', 'companies.recruiter_id')->join('companies', 'companies.company_id', '=', 'company_lists.id')->where('company_lists.status', '1')->where('companies.recruiter_id', '!=' , Auth::id())->get();
+        return view('recruiter.company.company', compact('companies', 'allCompany', 'getAllCompany', 'companyCount', 'getCompany'));
     }
 
     public function createCompany() {
@@ -75,9 +85,19 @@ class RecruiterController extends Controller
         return redirect()->route('recruiter_companyAll');
     }
 
+    public function addMoreCompany($id){
+        Companies::create([
+            'company_id' => $id,
+            'recruiter_id' => Auth::id(),
+            'status' => '1',
+            'created_at' => $this->dttm
+        ]);
+
+        return redirect()->route('recruiter_companyAll');
+    }
+
     public function archiveCompanyID($id){
-        $dttm = now();
-        Companies::where('recruiter_id', '=', Auth::id())->where('company_id', '=', $id)->update(['status' => '0', 'updated_at' => $dttm]);
+        Companies::where('recruiter_id', '=', Auth::id())->where('company_id', '=', $id)->update(['status' => '0', 'updated_at' => $this->dttm]);
         return redirect()->route('recruiter_companyAll');
     }
     
@@ -102,12 +122,10 @@ class RecruiterController extends Controller
             'password' => ['required',  Rules\Password::defaults()],
         ]);
 
-        $dttm = now();
-
         $recruiter = Recruiter::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'created_at' => $dttm = now(),
+            'created_at' => $this->dttm,
         ]);
 
         DB::table('recruiter_information')->insert([
@@ -116,7 +134,7 @@ class RecruiterController extends Controller
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
-                'created_at' => $dttm
+                'created_at' => $this->dttm
             ]
         ]);
 

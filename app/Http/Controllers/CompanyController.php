@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 class CompanyController extends Controller
 {
-    
 
     public function AddCompany(CompanyRequest $request){
 
