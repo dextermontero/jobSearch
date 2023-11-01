@@ -74,6 +74,8 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     // Company Info
     Route::get('/company', [RecruiterController::class, 'showCompanyAll'])->name('recruiter_companyAll')->middleware('auth:recruiter'); // SELECT *
     Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter'); // CREATE COMPANY
+
+    Route::post('/company/search', [RecruiterController::class, 'searchCompany'])->name('recruiter_searchCompany')->middleware('auth:recruiter'); // SELECT BY ID
     
     Route::get('/company/{id}', [RecruiterController::class, 'showCompanyID'])->middleware('auth:recruiter'); // SELECT BY ID
     Route::get('/company/edit/{id}', [RecruiterController::class, 'showEditCompanyID'])->middleware('auth:recruiter'); // EDIT BY ID
