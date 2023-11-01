@@ -63,14 +63,16 @@
                                 </button>
                                 <div class="px-5 py-2 lg:px-5">
                                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Search Company</h3>
-                                    <form class="space-y-1 mb-4" action="#">
+                                    <form method="post" class="space-y-1 mb-4" action="">
+                                        @csrf
                                         <div>
-                                            <label for="company_name" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
-                                            <input type="company_name" name="company_name" id="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Company Name">
+                                            <label for="search_company" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
+                                            <input type="text" name="search_company" id="search_company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Company Name">
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
-                                        @if ($allCompany > 0)
+                                        <div id="test"></div>
+                                        {{-- @if ($allCompany > 0)
                                             @foreach ($getAllCompany as $companyList)
                                                 <a href="/recruiter/company/add/{{ $companyList->id}}" class="group">
                                                     <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
@@ -94,7 +96,7 @@
                                                     No Company Data
                                                 </p>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -132,13 +134,15 @@
                                 </button>
                                 <div class="px-5 py-2 lg:px-5">
                                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Search Company</h3>
-                                    <form class="space-y-1 mb-4" action="#">
+                                    <form method="post" class="space-y-1 mb-4" action="">
+                                        @csrf
                                         <div>
-                                            <label for="company_name" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
-                                            <input type="company_name" name="company_name" id="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Company Name">
+                                            <label for="search_company" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
+                                            <input type="text" name="search_company" id="search_company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Company Name">
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
+                                        <div id="test"></div>
                                         @if ($allCompany > 0)
                                         @foreach ($getCompany as $companyList)
                                             <a href="/recruiter/company/add/{{ $companyList->id}}" class="group">
@@ -180,5 +184,75 @@
         @include('partials.r_footer')
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#search_company').on('keyup', function(){
+            search();
+        });
+        search();
+        function search(){
+            var keyword = $('#search_company').val();
+            var token = $('input[name="_token"]').attr('value');
+            $.post('{{ route("recruiter_searchCompany") }}',
+            {
+                _token: token,
+                keyword:keyword
+            },
+            function(data){
+                displayCompanies(data);
+            });
+        }
+        function displayCompanies(res){
+            let data = '';
+            if(res.companies.length <= 0){
+                data+= `
+                <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
+                    <p class="text-2xl text-gray-400 dark:text-gray-500">
+                        No Company Data
+                    </p>
+                </div>`;
+            }
+            for(let i = 0; i < res.companies.length; i++){
+
+                if(res.companies[i].recruiter_id === {{ Auth::id() }}){
+                    data += `
+                    <div class="group">
+                        <div class="inline-flex items-center w-full group-hover:bg-gray-100 rounded-md p-1">
+                            <img src="{{ asset('assets/company/logo/') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="">
+                                    <h2 class="text-gray-700 text-md font-medium">`+res.companies[i].company_name+`</h2>
+                                    <span class="text-gray-600 text-sm font-poppins">`+res.companies[i].company_categories+`</span>
+                                </div>
+                                <div class="text-right text-blue-500 mr-3 rounded-lg p-2 whitespace-nowrap">
+                                    Added
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                }else{
+                    data += `
+                    <a href="/recruiter/company/add/`+res.companies[i].id+`" class="group">
+                        <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
+                            <img src="{{ asset('assets/company/logo/') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="">
+                                    <h2 class="text-gray-700 text-md font-medium">`+res.companies[i].company_name+`</h2>
+                                    <span class="text-gray-600 text-sm font-poppins">`+res.companies[i].company_categories+`</span>
+                                </div>
+                                <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Add
+                                </div>
+                            </div>
+                        </div>
+                    </a> `;
+                }
+            }
+            $('#test').html(data);
+        }
+    });
+
+    </script>
 </body>
 </html>

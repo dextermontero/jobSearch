@@ -67,22 +67,34 @@ class RecruiterController extends Controller
         return view('recruiter.company.create');
     }
 
-    public function showCompanyID($id){
+    /* public function showCompanyID($id){
         $idCheck = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->exists();
         $companiesInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->get();
         if($idCheck){
             return view('recruiter.company.view', compact('companiesInfo'));
         }
         return redirect()->route('recruiter_companyAll');
-    }
+    } */
 
-    public function showEditCompanyID($id){
+    /* public function showEditCompanyID($id){
         $idCheck = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->exists();
         $editCompaniesInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->get();
         if($idCheck){
             return view('recruiter.company.edit', compact('editCompaniesInfo'));
         }
         return redirect()->route('recruiter_companyAll');
+    } */
+
+    public function searchCompany(Request $request){
+        $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->get();
+        //$company = CompanyList::select('company_name')->get();
+        if($request->keyword != ''){
+            $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories', 'c.recruiter_id')->join('companies as c', 'c.company_id', '=', 'cl.id')->where('cl.status', '1')->where('company_name', 'iLIKE', '%'.$request->keyword.'%')->get();
+        }
+
+        return response()->json([
+            'companies' => $company
+        ]);
     }
 
     public function addMoreCompany($id){
