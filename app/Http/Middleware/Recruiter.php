@@ -18,7 +18,7 @@ class Recruiter
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('recruiter')->check()){
-            return redirect()->route('recruiter_login')->with('msg', 'Test');
+            return redirect()->route('recruiter_login');
         }
         return $next($request);
     }
