@@ -4,13 +4,15 @@
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="rounded">
                 @if ($companyCount > 0)
-                    <div class="flex justify-end mb-4">
-                        <button type="button" data-modal-target="add-more-company" data-modal-toggle="add-more-company" class="bg-blue-500 px-3 py-2 text-white rounded-lg">
-                            <i class="fa-solid fa-plus"></i>
-                            Add Company
-                        </button>
-                    </div>
+                <div class="flex justify-end mb-4">
+                    <button type="button" data-modal-target="add-more-company" data-modal-toggle="add-more-company" class="bg-blue-500 px-3 py-2 text-white rounded-lg">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Company
+                    </button>
+                </div>
                     @foreach ($companies as $company)
+
+                   {{--  {{ dd($company) }} --}}
                     <div class="group">
                         <div class="flex flex-col md:flex-row items-start md:items-center justify-between min-h-min mb-4 rounded bg-gray-50 p-4 group-hover:bg-gray-100 transition duration-100">
                             <div class="">
@@ -23,21 +25,21 @@
                                 </div>
                             </div>
                             <div class="px-3 py-1 md:px-3 md:py-4 mb-2 flex items-center justify-end w-full md:w-[20%]">
-                                <a href="/recruiter/company/{{ $company->company_id }}" data-tooltip-target="view_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
+                                <a href="/recruiter/company/{{ $company->id }}" data-tooltip-target="view_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-teal-500 group-hover:bg-white">
                                     <i class="fa-solid fa-eye"></i>
                                     <div id="view_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                         View Details
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="/recruiter/company/edit/{{ $company->company_id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
+                                <a href="/recruiter/company/edit/{{ $company->id }}" data-tooltip-target="edit_{{ $company->id }}"class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-blue-500 group-hover:bg-white">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     <div id="edit_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                         Edit Details
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <form action="/recruiter/company/{{ $company->company_id }}" method="POST">
+                                <form action="/recruiter/company/{{ $company->id }}" method="POST">
                                     @csrf
                                     <button type="submit" id="archive" name="archive" data-tooltip-target="archive_{{ $company->id }}" class="p-3 bg-gray-200 mr-2 rounded w-12 h-12 text-center text-gray-600 hover:text-red-500 group-hover:bg-white"><i class="fa-solid fa-box-archive"></i></button>
                                     <div id="archive_{{ $company->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -67,36 +69,11 @@
                                         @csrf
                                         <div>
                                             <label for="search_company" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
-                                            <input type="text" name="search_company" id="search_company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Company Name">
+                                            <input type="text" name="search_company" id="search_company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Search company name">
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         <div id="test"></div>
-                                        {{-- @if ($allCompany > 0)
-                                            @foreach ($getAllCompany as $companyList)
-                                                <a href="/recruiter/company/add/{{ $companyList->id}}" class="group">
-                                                    <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                        <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
-                                                        <div class="flex justify-between items-center w-full">
-                                                            <div class="">
-                                                                <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
-                                                                <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
-                                                            </div>
-                                                            <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
-                                                                <i class="fa-solid fa-plus"></i>
-                                                                Add
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>                                          
-                                            @endforeach
-                                        @else
-                                            <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
-                                                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                                    No Company Data
-                                                </p>
-                                            </div>
-                                        @endif --}}
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -143,31 +120,6 @@
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         <div id="test"></div>
-                                        @if ($allCompany > 0)
-                                        @foreach ($getCompany as $companyList)
-                                            <a href="/recruiter/company/add/{{ $companyList->id}}" class="group">
-                                                <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                                                    <img src="{{ asset('assets/company/logo/'.$companyList->company_logo) }}" class="h-16 w-16 mr-3 rounded-md" alt="">
-                                                    <div class="flex justify-between items-center w-full">
-                                                        <div class="">
-                                                            <h2 class="text-gray-700 text-md font-medium">{{ $companyList->company_name }}</h2>
-                                                            <span class="text-gray-600 text-sm font-poppins">{{ $companyList->company_categories }}</span>
-                                                        </div>
-                                                        <div class="text-right text-green-500 mr-3 rounded-lg p-2 hover:bg-green-500 hover:text-white whitespace-nowrap">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                            Add
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>                                          
-                                        @endforeach
-                                        @else
-                                            <div class="flex items-center justify-center h-56 mb-4 rounded  dark:bg-gray-800">
-                                                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                                    No Company Data
-                                                </p>
-                                            </div>
-                                        @endif
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -200,6 +152,7 @@
             },
             function(data){
                 displayCompanies(data);
+                console.log(data);
             });
         }
         function displayCompanies(res){
@@ -213,28 +166,10 @@
                 </div>`;
             }
             for(let i = 0; i < res.companies.length; i++){
-
-                if(res.companies[i].recruiter_id === {{ Auth::id() }}){
-                    data += `
-                    <div class="group">
-                        <div class="inline-flex items-center w-full group-hover:bg-gray-100 rounded-md p-1">
-                            <img src="{{ asset('assets/company/logo/') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
-                            <div class="flex justify-between items-center w-full">
-                                <div class="">
-                                    <h2 class="text-gray-700 text-md font-medium">`+res.companies[i].company_name+`</h2>
-                                    <span class="text-gray-600 text-sm font-poppins">`+res.companies[i].company_categories+`</span>
-                                </div>
-                                <div class="text-right text-blue-500 mr-3 rounded-lg p-2 whitespace-nowrap">
-                                    Added
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;
-                }else{
-                    data += `
+                data += `
                     <a href="/recruiter/company/add/`+res.companies[i].id+`" class="group">
                         <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
-                            <img src="{{ asset('assets/company/logo/') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
+                            <img src="{{ asset('assets/company/logo') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
                             <div class="flex justify-between items-center w-full">
                                 <div class="">
                                     <h2 class="text-gray-700 text-md font-medium">`+res.companies[i].company_name+`</h2>
@@ -246,8 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a> `;
-                }
+                    </a>`;
             }
             $('#test').html(data);
         }

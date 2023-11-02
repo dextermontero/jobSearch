@@ -55,8 +55,8 @@ class RecruiterController extends Controller
     public function showCompanyAll() {
         $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
         $getCompany = CompanyList::where('status', '1')->get();
-        $companies = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '=', '1')->where('companies.recruiter_id', '=', Auth::id())->orderBy('companies.id', 'DESC')->get(); // get all companies by recruiter
-        
+        $companies = DB::table('companies as c')->select('c.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->leftJoin('company_lists as cl', 'cl.id', '=', 'c.company_id')->where('c.status', '1')->where('c.recruiter_id', Auth::id())->orderByDesc('c.id')->get();
+
         $allCompany = CompanyList::where('company_lists.status', '1')->count(); // count all companies
         
         $getAllCompany = CompanyList::select('company_lists.id', 'company_lists.company_logo', 'company_lists.company_name', 'company_lists.company_categories', 'companies.company_id', 'companies.recruiter_id')->join('companies', 'companies.company_id', '=', 'company_lists.id')->where('company_lists.status', '1')->where('companies.recruiter_id', '!=' , Auth::id())->get();
@@ -67,29 +67,30 @@ class RecruiterController extends Controller
         return view('recruiter.company.create');
     }
 
-    /* public function showCompanyID($id){
+    public function showCompanyID($id){
         $idCheck = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->exists();
         $companiesInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->get();
         if($idCheck){
             return view('recruiter.company.view', compact('companiesInfo'));
         }
         return redirect()->route('recruiter_companyAll');
-    } */
+    }
 
-    /* public function showEditCompanyID($id){
+    public function showEditCompanyID($id){
         $idCheck = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->exists();
         $editCompaniesInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.company_id', '=', $id)->get();
         if($idCheck){
             return view('recruiter.company.edit', compact('editCompaniesInfo'));
         }
         return redirect()->route('recruiter_companyAll');
-    } */
+    }
 
+    /* Fixing searching with indicate add or added */
     public function searchCompany(Request $request){
-        $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->get();
-        //$company = CompanyList::select('company_name')->get();
+        $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->where('cl.status', '1')->distinct('cl.id')->orderBy('cl.id', 'ASC')->get(); 
+        
         if($request->keyword != ''){
-            $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories', 'c.recruiter_id')->join('companies as c', 'c.company_id', '=', 'cl.id')->where('cl.status', '1')->where('company_name', 'iLIKE', '%'.$request->keyword.'%')->get();
+            $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->where('cl.status', '1')->where('cl.status', '1')->where('company_name', 'iLIKE', '%'.$request->keyword.'%')->get();
         }
 
         return response()->json([
@@ -97,19 +98,23 @@ class RecruiterController extends Controller
         ]);
     }
 
+    /* Done fixing queries */
     public function addMoreCompany($id){
-        Companies::create([
-            'company_id' => $id,
-            'recruiter_id' => Auth::id(),
-            'status' => '1',
-            'created_at' => $this->dttm
-        ]);
-
+        $idCheck = Companies::where('company_id', $id)->where('recruiter_id', Auth::id())->exists();
+        if(!$idCheck){
+            Companies::create([
+                'company_id' => $id,
+                'recruiter_id' => Auth::id(),
+                'status' => '1',
+                'created_at' => $this->dttm
+            ]);
+        }
         return redirect()->route('recruiter_companyAll');
     }
 
+    /* Done fixing queries */
     public function archiveCompanyID($id){
-        Companies::where('recruiter_id', '=', Auth::id())->where('company_id', '=', $id)->update(['status' => '0', 'updated_at' => $this->dttm]);
+        Companies::where('recruiter_id', '=', Auth::id())->where('id', '=', $id)->update(['status' => '0', 'updated_at' => $this->dttm]);
         return redirect()->route('recruiter_companyAll');
     }
     
@@ -150,7 +155,11 @@ class RecruiterController extends Controller
             ]
         ]);
 
-        return redirect()->route('recruiter_dashboard');
+        if(Auth::guard('recruiter')->attempt(['email' => $request->email, 'password' => $request->password])){
+            $request->session()->regenerate();
+            return redirect()->route('recruiter_dashboard');
+        }
+        
     }
 
     public function destroy(){
