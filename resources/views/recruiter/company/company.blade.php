@@ -4,15 +4,21 @@
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="rounded">
                 @if ($companyCount > 0)
-                <div class="flex justify-end mb-4">
-                    <button type="button" data-modal-target="add-more-company" data-modal-toggle="add-more-company" class="bg-blue-500 px-3 py-2 text-white rounded-lg">
-                        <i class="fa-solid fa-plus"></i>
-                        Add Company
-                    </button>
-                </div>
+                    <nav class="w-full rounded-md mt-2 mb-4">
+                        <ol class="list-reset flex items-center justify-end">
+                            <li>
+                                <button type="button" data-modal-target="add-more-company" data-modal-toggle="add-more-company" class="bg-blue-500 px-3 py-2 text-white rounded-lg hover:bg-blue-700">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Add Company
+                                </button>
+                            </li>
+                            <li>
+                            <span class="mx-2 text-neutral-500 dark:text-neutral-400">/</span>
+                            </li>
+                            <li class="text-neutral-500 dark:text-neutral-400 font-medium"><a href="#" class="hover:text-blue-700">Archived</a></li>
+                        </ol>
+                    </nav>
                     @foreach ($companies as $company)
-
-                   {{--  {{ dd($company) }} --}}
                     <div class="group">
                         <div class="flex flex-col md:flex-row items-start md:items-center justify-between min-h-min mb-4 rounded bg-gray-50 p-4 group-hover:bg-gray-100 transition duration-100">
                             <div class="">
@@ -86,12 +92,22 @@
                     </div>
                 @else
                 {{-- NO DATA START HERE --}}
-                    <div class="flex justify-end">
-                        <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-green-500 px-3 py-2 text-white rounded-lg">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            Search Company
-                        </button>
-                    </div>
+                    <nav class="w-full rounded-md mt-2 mb-4">
+                        <ol class="list-reset flex items-center justify-end">
+                            <li>
+                                <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-green-500 px-3 py-2 text-white rounded-lg hover:bg-green-700">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    Search Company
+                                </button>
+                            </li>
+                            <li>
+                                <span class="mx-2 text-neutral-500 dark:text-neutral-400">/</span>
+                            </li>
+                            <li class="text-neutral-500 dark:text-neutral-400 font-medium">
+                                <a href="#" class="hover:text-blue-700">Archived</a>
+                            </li>
+                        </ol>
+                    </nav>
                     <div class="flex items-center justify-center h-[28rem] mb-4 rounded dark:bg-gray-800">
                         <p class="text-2xl text-gray-400 dark:text-gray-500">
                             No Company Data
@@ -188,5 +204,30 @@
     });
 
     </script>
+    <script>
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true,
+            "positionClass" : "toast-bottom-right",
+            "showDuration": "300",
+            "hideDuration": "1000",
+        }
+        @if(Session::has('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+      
+        @if(Session::has('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+      
+        @if(Session::has('info'))
+            toastr.info("{{ session('info') }}");
+        @endif
+      
+        @if(Session::has('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+      </script>
 </body>
 </html>

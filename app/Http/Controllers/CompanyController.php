@@ -63,6 +63,6 @@ class CompanyController extends Controller
             'status' => $status,
         ]);
 
-        return redirect()->route('recruiter_companyAll');
+        return redirect()->route('recruiter_companyAll')->with('success','Company Created Successfully');;
     } 
 }
