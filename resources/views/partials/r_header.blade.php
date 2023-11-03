@@ -16,6 +16,8 @@
         @else
             @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js'])
         @endif
+        <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css')}}">
+        <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
     </head>
     <body class="m-0 p-0 bg-gray-200 overflow-x-hidden">
         <x-r_nav></x-r_nav>

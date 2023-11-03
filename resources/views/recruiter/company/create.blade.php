@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="bg-green-600 p-4 rounded text-white font-medium mb-6 ml-auto mr-8" id="save">Save Company</button>
+                        <button type="submit" class="bg-green-500 p-4 rounded text-white font-medium mb-6 ml-auto mr-8 hover:bg-green-600" id="save">Save Company</button>
                     </div>
                 </form>
             </div>

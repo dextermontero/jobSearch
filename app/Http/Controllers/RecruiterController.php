@@ -108,14 +108,15 @@ class RecruiterController extends Controller
                 'status' => '1',
                 'created_at' => $this->dttm
             ]);
+            return redirect()->route('recruiter_companyAll')->with('success','Company Added Successfully.');
         }
-        return redirect()->route('recruiter_companyAll');
+        return redirect()->route('recruiter_companyAll')->with('warning','Something wrong!');
     }
 
     /* Done fixing queries */
     public function archiveCompanyID($id){
         Companies::where('recruiter_id', '=', Auth::id())->where('id', '=', $id)->update(['status' => '0', 'updated_at' => $this->dttm]);
-        return redirect()->route('recruiter_companyAll');
+        return redirect()->route('recruiter_companyAll')->with('success','Company Archived.');
     }
     
     public function Login(Request $request){
