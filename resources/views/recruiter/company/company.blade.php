@@ -13,9 +13,11 @@
                                 </button>
                             </li>
                             <li>
-                            <span class="mx-2 text-neutral-500 dark:text-neutral-400">/</span>
+                                <span class="mx-2 text-neutral-500 dark:text-neutral-400">/</span>
                             </li>
-                            <li class="text-neutral-500 dark:text-neutral-400 font-medium"><a href="#" class="hover:text-blue-700">Archived</a></li>
+                            <li class="text-neutral-500 dark:text-neutral-400 font-medium">
+                                <a href="#" class="hover:text-blue-700">Archived</a>
+                            </li>
                         </ol>
                     </nav>
                     @foreach ($companies as $company)
@@ -79,7 +81,7 @@
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
-                                        <div id="test"></div>
+                                        <span id="showCompany"></span>
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -135,8 +137,7 @@
                                         </div>
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
-                                        <div id="test"></div>
-                                        
+                                        <span id="showCompany"></span>
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -158,7 +159,9 @@
         $('#search_company').on('keyup', function(){
             search();
         });
+
         search();
+
         function search(){
             var keyword = $('#search_company').val();
             var token = $('input[name="_token"]').attr('value');
@@ -169,9 +172,9 @@
             },
             function(data){
                 displayCompanies(data);
-                console.log(data);
             });
         }
+
         function displayCompanies(res){
             let data = '';
             if(res.companies.length <= 0){
@@ -186,8 +189,6 @@
             res.companies.forEach(function(cl) {
                 cl.action = res.getCompany.some(c => c.company_id === cl.id)
             });
-
-            console.log(res.companies)
 
             for(let i = 0; i < res.companies.length; i++){
                 if(res.companies[i].action){
@@ -224,15 +225,9 @@
                         </div>
                     </a>`;
                 }
-
-                /* if(res.getCompany[0].company_id == res.companies[i].id){
-                    
-                }else{
-                    
-                } */
             }
             
-            $('#test').html(data);
+            $('#showCompany').html(data);
         }
     });
     </script>
