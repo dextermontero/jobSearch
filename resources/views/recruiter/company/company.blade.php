@@ -71,7 +71,7 @@
                                 </button>
                                 <div class="px-5 py-2 lg:px-5">
                                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Search Company</h3>
-                                    <form method="post" class="space-y-1 mb-4" action="">
+                                    <form method="POST" class="space-y-1 mb-4" action="">
                                         @csrf
                                         <div>
                                             <label for="search_company" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
@@ -127,7 +127,7 @@
                                 </button>
                                 <div class="px-5 py-2 lg:px-5">
                                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Search Company</h3>
-                                    <form method="post" class="space-y-1 mb-4" action="">
+                                    <form method="POST" class="space-y-1 mb-4" action="">
                                         @csrf
                                         <div>
                                             <label for="search_company" class="block mb-2 text-md font-medium text-gray-900 ">Company Name</label>
@@ -136,6 +136,7 @@
                                     </form>
                                     <div class="h-80 overflow-y-auto mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-rounded-full p-2">
                                         <div id="test"></div>
+                                        
                                     </div>
                                     <div class="flex justify-end divide-y-2 mb-2">
                                         <a href="{{ route('recruiter_createCompany') }}" class="bg-blue-500 text-gray-100 py-2 px-3 rounded-full font-medium hover:bg-blue-600">
@@ -181,8 +182,32 @@
                     </p>
                 </div>`;
             }
+
+            res.companies.forEach(function(cl) {
+                cl.action = res.getCompany.some(c => c.company_id === cl.id)
+            });
+
+            console.log(res.companies)
+
             for(let i = 0; i < res.companies.length; i++){
-                data += `
+                if(res.companies[i].action){
+                    data += `
+                    <div class="group">
+                        <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
+                            <img src="{{ asset('assets/company/logo') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="">
+                                    <h2 class="text-gray-700 text-md font-medium">`+res.companies[i].company_name+`</h2>
+                                    <span class="text-gray-600 text-sm font-poppins">`+res.companies[i].company_categories+`</span>
+                                </div>
+                                <div class="text-right text-blue-500 mr-3 p-2 whitespace-nowrap">
+                                    Added
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                }else{
+                    data += `
                     <a href="/recruiter/company/add/`+res.companies[i].id+`" class="group">
                         <div class="inline-flex items-center w-full group-hover:bg-gray-300 rounded-md p-1">
                             <img src="{{ asset('assets/company/logo') }}/`+res.companies[i].company_logo+`" class="h-16 w-16 mr-3 rounded-md" alt="`+res.companies[i].company_name+`">
@@ -198,11 +223,18 @@
                             </div>
                         </div>
                     </a>`;
+                }
+
+                /* if(res.getCompany[0].company_id == res.companies[i].id){
+                    
+                }else{
+                    
+                } */
             }
+            
             $('#test').html(data);
         }
     });
-
     </script>
     <script>
         toastr.options =
