@@ -28,6 +28,7 @@ class CompanyList extends Model
         'company_linkedin',
         'company_twitter',
         'company_instagram',
+        'action',
         'status',
     ];
 }

@@ -87,13 +87,14 @@ class RecruiterController extends Controller
 
     /* Fixing searching with indicate add or added */
     public function searchCompany(Request $request){
-        $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->where('cl.status', '1')->distinct('cl.id')->orderBy('cl.id', 'ASC')->get(); 
-        
+        $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories', 'cl.action')->where('cl.status', '1')->distinct('cl.id')->orderBy('cl.id', 'ASC')->get(); 
+        $getId = Companies::select('company_id')->where('recruiter_id', Auth::id())->get();
         if($request->keyword != ''){
             $company = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->where('cl.status', '1')->where('cl.status', '1')->where('company_name', 'iLIKE', '%'.$request->keyword.'%')->get();
         }
 
         return response()->json([
+            'getCompany' => $getId,
             'companies' => $company
         ]);
     }

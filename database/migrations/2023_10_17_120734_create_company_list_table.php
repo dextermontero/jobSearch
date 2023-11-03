@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('company_linkedin')->nullable();
             $table->string('company_twitter')->nullable();
             $table->string('company_instagram')->nullable();
+            $table->string('action')->nullable();
             $table->integer('status')->default(0); // 0 = archive; 1 = active
             $table->timestamps();
         });
