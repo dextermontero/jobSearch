@@ -3,27 +3,19 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-[4.5rem]">
             <div class="bg-gray-50 rounded p-4">
-                <div class="mb-4">
+                <div class="mb-4 p-2">
                     <h2 class="text-2xl font-poppins font-bold tracking-wider mb-4">Compose Job Hiring</h2>
-                    <form class="mb-20">
-                        <div class="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 p-2">
-                            <div class="mb-4">
-                                <div class="flex flex-col">
-                                    <div class="mb-4 flex justify-center">
-                                        <img src="{{ asset('assets/company/logo/default.png') }}" class="h-36 w-36">
-                                    </div>
-                                    <div class="col-span-2 w-full">
-                                        <div class="mb-4">
-                                            <label for="company_name" class="block mb-2 text-lg font-medium text-gray-900">Company Name</label>
-                                            <input type="text" id="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Company Name" disabled>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="company_country" class="block mb-2 text-lg font-medium text-gray-900">Country</label>
-                                            <input type="text" id="company_country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Company Country" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="search_company" class="block mb-2 text-lg font-medium text-gray-900">Select Company</label>
+                            <select id="search_company" class="company_dropdown"></select>
+                        </div>
+                    </form>
+                    <form action="{{ route('recruiter_jobpost') }}" method="POST" class="mb-10 mt-10">
+                        @csrf
+                        <span id="displayCompany"></span>
+                        <div class="grid grid-cols-1 gap-4 mt-5">
                             <div class="p-0 md:px-4">
                                 <div class="mb-4">
                                     <label for="job_title" class="block mb-2 text-lg font-medium text-gray-900">Job Title</label>
@@ -35,6 +27,7 @@
                             </div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>
@@ -77,6 +70,94 @@
                 document.getElementById('quill-html').value = html;
                 console.log(editor.getContents());
                 /* post_job.submit(); */
+            });
+          </script>
+          <script>
+            $(document).ready(function() {
+                var token = $('input[name="_token"]').attr('value');
+                $( "#search_company" ).select2({
+                    placeholder: {
+                        id: '', // the value of the option
+                        text: 'None Selected'
+                    },
+                    width: '100%',
+                    ajax: { 
+                        url: "{{route('recruiter_showcompany')}}",
+                        type: "post",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                _token: token,
+                                search: params.term // search term
+                            };
+                        },
+                        processResults: function (response) {
+                            return {
+                                results: response
+                            };
+                            console.log(response);
+                        },
+                        cache: true
+                    },
+                    templateResult: function (response) {
+                        var $span = $('<span><div class="inline-flex items-center justify-center px-2"><img src="{{ asset("assets/company/logo/") }}/'+ response.logo +'" class="h-12 w-12 rounded-full mr-4"><div class="flex flex-col items-start justify-center"><p class="text-gray-700 text-md font-medium tracking-wider">'+ response.name +'</p><h5 class="text-sm text-gray-600 tracking-wider">'+ response.category +'</h5></div></div></span>');
+                        return $span;
+                    },
+                    templateSelection: function (response) {
+                        var $span = "";
+                        if (response.id.length > 0 ) {
+                            return $span = $('<span><div class="inline-flex items-center justify-center px-2"><img src="{{ asset("assets/company/logo/") }}/'+ response.logo +'" class="h-12 w-12 rounded-full mr-4"><div class="flex flex-col items-start justify-center"><p class="text-gray-700 text-md font-medium tracking-wider">'+ response.name +'</p><h5 class="text-sm text-gray-600 tracking-wider">'+ response.category +'</h5></div></div></span>');
+                        } else {
+                            return $span = $('<span><div class="inline-flex items-center justify-center px-2"><img src="{{ asset("assets/company/logo/default.png") }}" class="h-12 w-12 rounded-full mr-4"><div class="flex flex-col items-start justify-center"><p class="text-gray-700 text-md font-medium tracking-wider">'+ response.text +'</p><h5 class="text-sm text-gray-600 tracking-wider">'+ response.text +'</h5></div></div></span>');t;
+                        }
+                        return $span;
+                    }
+
+                });
+
+                $('#search_company').on('change', function() {
+                    var getID = $(this).find('option:selected');
+                    var storeID = '';
+                    
+                    getID.each(function() {
+                        storeID = $(this).val();
+                    });
+                    console.log(storeID);
+                    $.post('{{ route("recruiter_getCompanyID") }}',
+                    {
+                        _token: token,
+                        id:storeID
+                    },
+                    function(data){
+                        displayCompany(data);
+                    });
+
+                    function displayCompany(data){
+                        let display = '';
+                        if(data.dispCompany.length <= 0){
+                        }else{
+                            display += `<div class="grid grid-cols-1 md:grid-cols-[25%_73%] gap-4">
+                            <div class="mb-4 flex justify-center">
+                                <img src="{{ asset('assets/company/logo') }}/`+ data.dispCompany[0].company_logo +`" class="h-36 w-36">
+                            </div>    
+                            <div class="">
+                                <input type="text" id="company_id" name="company_id" value="`+ data.dispCompany[0].id +`" hidden>
+                                <div class="">
+                                    <label for="company_name" class="block mb-2 text-lg font-medium text-gray-900">Company Name</label>
+                                    <input type="text" id="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 border-transparent focus:border-transparent focus:ring-0 text-sm rounded-lg block w-full px-0 py-2" value="`+ data.dispCompany[0].company_name +`" placeholder="Company Name" disabled>
+                                </div>
+                                <div class="">
+                                    <label for="company_country" class="block mb-2 text-lg font-medium text-gray-900">Country</label>
+                                    <input type="text" id="company_country" class="bg-gray-50 border border-gray-300 text-gray-900 border-transparent focus:border-transparent focus:ring-0 text-sm rounded-lg block w-full px-0 py-2" value="`+ data.dispCompany[0].company_categories +`" placeholder="Company Categories" disabled>
+                                </div>
+                            </div>
+                        </div>`;
+                        }
+                        $('#displayCompany').html(display);
+                    }
+                    
+                });
             });
           </script>
     </div>

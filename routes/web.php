@@ -70,6 +70,9 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     // Job Post
     Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
     Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
+    Route::post('/post/job', [RecruiterController::class, 'createPost'])->name('recruiter_savePost')->middleware('auth:recruiter');
+    Route::post('/post/searchcompany', [RecruiterController::class, 'showSearchCompany'])->name('recruiter_showcompany')->middleware('auth:recruiter');
+    Route::post('/post/getID', [RecruiterController::class, 'showGetID'])->name('recruiter_getCompanyID')->middleware('auth:recruiter');
 
     // Company Info
     Route::get('/company', [RecruiterController::class, 'showCompanyAll'])->name('recruiter_companyAll')->middleware('auth:recruiter'); // SELECT *
