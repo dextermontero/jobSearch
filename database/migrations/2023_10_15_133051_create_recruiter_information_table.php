@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recruiter_information', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('uid')->unsigned();
             $table->foreign('uid')->references('id')->on('recruiters');
             $table->string('img_profile')->default('user_default.png');

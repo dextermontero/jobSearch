@@ -77,10 +77,6 @@ class RecruiterController extends Controller
         }
     }
 
-    public function createPost(Request $request){
-        dd($request->all());
-    }
-
     public function showCompanyAll() {
         $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
         $companies = DB::table('companies as c')->select('c.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->leftJoin('company_lists as cl', 'cl.id', '=', 'c.company_id')->where('c.status', '1')->where('c.recruiter_id', Auth::id())->orderByDesc('c.id')->get();

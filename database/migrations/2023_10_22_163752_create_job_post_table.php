@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_post', function (Blueprint $table) {
-            $table->id();
-            $table->integer('recruiter_id')->unsigned();
-            $table->foreign('recruiter_id')->references('id')->on('recruiters');
+        Schema::create('job_posts', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            //$table->foreign('company_id')->references('id')->on('company_lists');
+            $table->integer('recruiter_id')->unsigned();
+            //$table->foreign('recruiter_id')->references('id')->on('recruiters');
             $table->text('job_title');
             $table->text('description');
             $table->integer('status')->default(0); // 0 = inactive; 1 = active; 2 = archived
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_post');
+        Schema::dropIfExists('job_posts');
     }
 };

@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('company_lists');
+            //$table->foreign('company_id')->references('id')->on('company_lists');
             $table->integer('recruiter_id')->unsigned();
-            $table->foreign('recruiter_id')->references('id')->on('recruiters');
+            //$table->foreign('recruiter_id')->references('id')->on('recruiters');
             $table->integer('status')->default(0); // 0 = archive; 1 = active
             $table->timestamps();
         });
