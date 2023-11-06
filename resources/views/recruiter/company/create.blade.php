@@ -154,8 +154,6 @@
             </div>
         </div>
         @include('partials.r_footer')
-    </div>
-</div>
 <script>
     var loadLogo = function(event) {
         

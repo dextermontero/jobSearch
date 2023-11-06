@@ -36,11 +36,13 @@
                             <div class="p-0 md:px-4">
                                 <div class="mb-4">
                                     <label for="job_title" class="block mb-2 text-lg font-medium text-gray-900">Job Title</label>
-                                    <input type="text" id="job_title" name="job_title" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Job title" required disabled>
+                                    <input type="text" id="job_title" name="job_title" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-indigo-700 focus:border-indigo-700 block w-full p-2.5" placeholder="Job title" disabled>
+                                    <span id="jobmsg"></span>
                                 </div>
                                 <div id="editor" name="editor"></div>
-                                <input type="hidden" name="quill-html" id="quill-html">
-                                <button type="submit"  id="post" name="post" class="rounded-full py-2 px-3 bg-blue-500 text-gray-50 mt-8 text-right hover:bg-blue-700" disabled>Post Hiring</button>
+                                <span id="editormsg"></span>
+                                <input type="hidden" name="quill_html" id="quill_html">
+                                <button type="submit" id="post" class="rounded-full py-2 px-3 bg-blue-500 text-gray-50 mt-8 text-right hover:bg-blue-700" disabled>Post Hiring</button>
                             </div>
                         </div>
                     </form>
@@ -81,11 +83,24 @@
                 theme: 'snow',
             });
             var customButton = document.querySelector('#post');
-            customButton.addEventListener('click', function() {
+            customButton.addEventListener('click', function(e) {
                 var html = editor.root.innerHTML;
-                document.getElementById('quill-html').value = html;
-                console.log(editor.getContents());
-                /* post_job.submit(); */
+                var check = editor.getLength();
+                var job = $('#job_title').val();
+                if(check > 1){
+                    $('#editormsg').html('');
+                    document.getElementById('quill_html').value = html;
+                }else {
+                    e.preventDefault();
+                    $('#editormsg').html('<p class="pt-1 text-red-600 font-normal">The composer field must be not empty.</p>');
+                }
+
+                if(job == ''){
+                    e.preventDefault();
+                    $('#jobmsg').html('<p class="pt-1 text-red-600 font-normal">The job title field must be not empty.</p>');
+                }else{
+                    $('#jobmsg').html('');
+                }
             });
           </script>
           <script>
@@ -156,7 +171,5 @@
                 });
             });
           </script>
-    </div>
-</div>
 </body>
 </html>

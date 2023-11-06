@@ -11,7 +11,5 @@
             </div>
         </div>
         @include('partials.r_footer')
-    </div>
-</div>
-</body>
+    </body>
 </html>
