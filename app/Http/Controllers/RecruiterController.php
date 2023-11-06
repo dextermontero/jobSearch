@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Companies;
 use App\Models\CompanyList;
+use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Recruiter;
@@ -24,8 +25,9 @@ class RecruiterController extends Controller
     }
     
     public function showDashboard(){
-        $companyCount = Companies::join('recruiters', 'recruiters.id', '=', 'companies.recruiter_id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->count(); // count all companies by recruiter
-        return view('recruiter.dashboard.index', compact('companyCount'));
+        $postCount = JobPost::where('recruiter_id', Auth::id())->count(); // Count All Job Post / archived by recruiter
+        $companyCount = Companies::where('recruiter_id', Auth::id())->count(); // count all companies added/archived by recruiter
+        return view('recruiter.dashboard.index', compact('postCount', 'companyCount'));
     }
 
     public function showAllApplicant(){
@@ -45,7 +47,13 @@ class RecruiterController extends Controller
     }
 
     public function showPost() {
-        return view('recruiter.post.post');
+        $allPost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->join('recruiters', 'recruiters.id', '=', 'job_posts.recruiter_id')->where('job_posts.recruiter_id', Auth::id())->get();
+        $inactivePost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->join('recruiters', 'recruiters.id', '=', 'job_posts.recruiter_id')->where('job_posts.status', 0)->where('job_posts.recruiter_id', Auth::id())->get();
+        $activePost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->join('recruiters', 'recruiters.id', '=', 'job_posts.recruiter_id')->where('job_posts.status', 1)->where('job_posts.recruiter_id', Auth::id())->get();
+        $rePost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->join('recruiters', 'recruiters.id', '=', 'job_posts.recruiter_id')->where('job_posts.status', 2)->where('job_posts.recruiter_id', Auth::id())->get();
+        $archivePost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->join('recruiters', 'recruiters.id', '=', 'job_posts.recruiter_id')->where('job_posts.status', 3)->where('job_posts.recruiter_id', Auth::id())->get();
+        
+        return view('recruiter.post.post', compact('allPost', 'inactivePost', 'activePost', 'rePost', 'archivePost'));
     }
 
     public function showJobPost() {

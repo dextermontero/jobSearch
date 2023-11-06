@@ -14,6 +14,11 @@ const tabElements: TabItem[] = [
         targetEl: document.querySelector('#activeTabs')
     },
     {
+        id: 'repost',
+        triggerEl: document.querySelector('#repost-tabs'),
+        targetEl: document.querySelector('#repostTabs')
+    },
+    {
         id: 'inactive',
         triggerEl: document.querySelector('#inactive-tabs'),
         targetEl: document.querySelector('#inactiveTabs')
