@@ -7,7 +7,7 @@
                     <div class="flex flex-row items-center place-content-center justify-start md:justify-between px-4 py-4">
                         <i class="fa-solid fa-briefcase text-4xl text-green-800"></i>
                         <div class="flex flex-col md:items-center justify-start ml-5 md:ml-0">
-                            <h2 class="text-gray-700 mt-2 text-2xl sm:text-3xl font-bold font-mono">100</h2>
+                            <h2 class="text-gray-700 mt-2 text-2xl sm:text-3xl font-bold font-mono">{{ $postCount }}</h2>
                             <span class="text-gray-700 text-xl font-medium">Posted Jobs</span>
                         </div>
                     </div>

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\File;
 class CompanyController extends Controller
 {
 
+    
+
+    // Creating New Company
     public function AddCompany(CompanyRequest $request){
 
         $request->validated();
