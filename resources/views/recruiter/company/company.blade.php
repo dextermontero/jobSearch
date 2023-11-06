@@ -184,7 +184,7 @@
                 </div>`;
             }
 
-            res.companies.forEach(function(cl) {
+            res.companies.forEach((cl) => {
                 cl.action = res.getCompany.some(c => c.company_id === cl.id)
             });
 

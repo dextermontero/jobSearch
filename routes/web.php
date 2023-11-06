@@ -69,22 +69,20 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::get('/applicants/{id}', [RecruiterController::class, 'showApplicant'])->name('recruiter_viewApplicant')->middleware('auth:recruiter');
 
     // Job Post
-    Route::get('/post', [RecruiterController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
+    Route::get('/post', [JobPostController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
     Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
     Route::post('/post/job', [JobPostController::class, 'createPost'])->name('recruiter_savePost')->middleware('auth:recruiter');
-    Route::post('/post/searchcompany', [RecruiterController::class, 'showSearchCompany'])->name('recruiter_showcompany')->middleware('auth:recruiter');
-    Route::post('/post/getID', [RecruiterController::class, 'showGetID'])->name('recruiter_getCompanyID')->middleware('auth:recruiter');
+    Route::post('/post/searchcompany', [JobPostController::class, 'showSearchCompany'])->name('recruiter_showcompany')->middleware('auth:recruiter');
+    /* Route::post('/post/getID', [RecruiterController::class, 'showGetID'])->name('recruiter_getCompanyID')->middleware('auth:recruiter'); */
 
     // Company Info
-    Route::get('/company', [RecruiterController::class, 'showCompanyAll'])->name('recruiter_companyAll')->middleware('auth:recruiter'); // SELECT *
     Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter'); // CREATE COMPANY
-
-    Route::post('/company/search', [RecruiterController::class, 'searchCompany'])->name('recruiter_searchCompany')->middleware('auth:recruiter'); // SELECT BY ID
-    
-    Route::get('/company/{id}', [RecruiterController::class, 'showCompanyID'])->middleware('auth:recruiter'); // SELECT BY ID
-    Route::get('/company/edit/{id}', [RecruiterController::class, 'showEditCompanyID'])->middleware('auth:recruiter'); // EDIT BY ID
-    Route::get('/company/add/{id}', [RecruiterController::class, 'addMoreCompany'])->middleware('auth:recruiter'); // ADD BY ID
-    Route::post('/company/{id}', [RecruiterController::class, 'archiveCompanyID'])->middleware('auth:recruiter'); // ARCHIVE BY ID
+    Route::get('/company', [CompanyController::class, 'showCompanyAll'])->name('recruiter_companyAll')->middleware('auth:recruiter'); // SELECT *
+    Route::post('/company/search', [CompanyController::class, 'searchCompany'])->name('recruiter_searchCompany')->middleware('auth:recruiter'); // SELECT BY ID
+    Route::get('/company/{id}', [CompanyController::class, 'showCompanyID'])->middleware('auth:recruiter'); // SELECT BY ID
+    Route::get('/company/edit/{id}', [CompanyController::class, 'showEditCompanyID'])->middleware('auth:recruiter'); // EDIT BY ID
+    Route::get('/company/add/{id}', [CompanyController::class, 'addMoreCompany'])->middleware('auth:recruiter'); // ADD BY ID
+    Route::post('/company/{id}', [CompanyController::class, 'archiveCompanyID'])->middleware('auth:recruiter'); // ARCHIVE BY ID
     
     // Post Routes //
 
