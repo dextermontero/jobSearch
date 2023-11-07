@@ -96,30 +96,112 @@
                                                     @else
                                                         <span class="bg-red-500 rounded-full px-3 py-[.18rem] text-sm text-gray-50 font-bold tracking-wider">Inactive</span>
                                                     @endif
-                                                    <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>
+                                                    @if ($all->updated_at == null)
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>
+                                                    @else
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($all->updated_at)->diffForHumans() }}</span>
+                                                    @endif
                                                 </div>
-                                                <div>
-                                                    <a href="#edit" data-tooltip-target="edit_{{ $all->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                        <div id="edit_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to edit post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </a>
-                                                    <button type="submit" data-tooltip-target="inactive_{{ $all->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
-                                                        <i class="fa-solid fa-eye-slash"></i>
-                                                        <div id="inactive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to inactive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
-                                                    <button type="submit" data-tooltip-target="archive_{{ $all->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
-                                                        <i class="fa-solid fa-box-archive"></i>
-                                                        <div id="archive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to archive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
+                                                <div class="inline-flex items-center">
+                                                    @if ($all->status === 0)
+                                                        <form action="/recruiter/post/repost/{{ $all->id }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="repost_{{ $all->id }}" id="status" name="status" class="text-blue-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                                <i class="fa-solid fa-rotate-left"></i>
+                                                                <div id="repost_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to repost post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/recruiter/post/archive/{{ $all->id }}" method="POST">    
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="archive_{{ $all->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                                <i class="fa-solid fa-box-archive"></i>
+                                                                <div id="archive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to archive post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                    @elseif($all->status === 1)
+                                                        <a href="/recruiter/post/edit/{{ $all->id }}" data-tooltip-target="edit_{{ $all->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                            <div id="edit_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to edit post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </a>
+                                                        <form action="/recruiter/post/inactive/{{ $all->id }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="inactive_{{ $all->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                <div id="inactive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to inactive post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/recruiter/post/archive/{{ $all->id }}" method="POST">    
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="archive_{{ $all->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                                <i class="fa-solid fa-box-archive"></i>
+                                                                <div id="archive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to archive post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                    @elseif($all->status === 2)
+                                                        <a href="/recruiter/post/edit/{{ $all->id }}" data-tooltip-target="edit_{{ $all->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                            <div id="edit_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to edit post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </a>
+                                                        <form action="/recruiter/post/inactive/{{ $all->id }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="inactive_{{ $all->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                <div id="inactive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to inactive post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/recruiter/post/archive/{{ $all->id }}" method="POST">    
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="archive_{{ $all->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                                <i class="fa-solid fa-box-archive"></i>
+                                                                <div id="archive_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to archive post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                    @else
+                                                        <form action="/recruiter/post/repost/{{ $all->id }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="repost_{{ $all->id }}" id="status" name="status" class="text-blue-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                                <i class="fa-solid fa-rotate-left"></i>
+                                                                <div id="repost_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to repost post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/recruiter/post/remove/{{ $all->id }}" method="POST">    
+                                                            @csrf
+                                                            <button type="submit" data-tooltip-target="delete_{{ $all->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                                <div id="delete_{{ $all->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                    Click to permanent remove post
+                                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                                </div>
+                                                            </button>
+                                                        </form>                                                        
+                                                    @endif
                                                 </div>
                                             </div>                                    
                                         </div>
@@ -160,30 +242,40 @@
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
                                                     <span class="bg-green-500 rounded-full px-3 py-[.18rem] text-sm text-gray-50 font-bold tracking-wider">Active</span>
-                                                    <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($active->created_at)->diffForHumans() }}</span>
+                                                    @if ($active->updated_at == null)
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($active->created_at)->diffForHumans() }}</span>
+                                                    @else
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($active->updated_at)->diffForHumans() }}</span>
+                                                    @endif
                                                 </div>
-                                                <div>
-                                                    <a href="#edit" data-tooltip-target="edit_{{ $active->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
+                                                <div class="inline-flex items-center">
+                                                    <a href="/recruiter/post/edit/{{ $active->id }}" data-tooltip-target="edit_{{ $active->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                         <div id="edit_{{ $active->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                                             Click to edit post
                                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                                         </div>
                                                     </a>
-                                                    <button type="submit" data-tooltip-target="inactive_{{ $active->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
-                                                        <i class="fa-solid fa-eye-slash"></i>
-                                                        <div id="inactive_{{ $active->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to inactive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
-                                                    <button type="submit" data-tooltip-target="archive_{{ $active->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
-                                                        <i class="fa-solid fa-box-archive"></i>
-                                                        <div id="archive_{{ $active->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to archive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
+                                                    <form action="/recruiter/post/inactive/{{ $active->id }}" method="post">
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="inactive_{{ $active->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                            <i class="fa-solid fa-eye-slash"></i>
+                                                            <div id="inactive_{{ $active->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to inactive post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                    <form action="/recruiter/post/archive/{{ $active->id }}" method="POST">    
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="archive_{{ $active->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                            <i class="fa-solid fa-box-archive"></i>
+                                                            <div id="archive_{{ $active->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to archive post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>                                    
                                         </div>
@@ -223,31 +315,41 @@
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
-                                                    <span class="bg-blue-500 rounded-full px-3 py-[.18rem] text-sm text-gray-50 font-bold tracking-wider">Active</span>
-                                                    <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($repost->created_at)->diffForHumans() }}</span>
+                                                    <span class="bg-blue-500 rounded-full px-3 py-[.18rem] text-sm text-gray-50 font-bold tracking-wider">Repost</span>
+                                                    @if ($repost->updated_at == null)
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($repost->created_at)->diffForHumans() }}</span>
+                                                    @else
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($repost->updated_at)->diffForHumans() }}</span>
+                                                    @endif
                                                 </div>
-                                                <div>
-                                                    <a href="#edit" data-tooltip-target="edit_{{ $repost->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
+                                                <div class="inline-flex items-center">
+                                                    <a href="/recruiter/post/edit/{{ $repost->id }}" data-tooltip-target="edit_{{ $repost->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                         <div id="edit_{{ $repost->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                                             Click to edit post
                                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                                         </div>
                                                     </a>
-                                                    <button type="submit" data-tooltip-target="inactive_{{ $repost->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
-                                                        <i class="fa-solid fa-eye-slash"></i>
-                                                        <div id="inactive_{{ $repost->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to inactive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
-                                                    <button type="submit" data-tooltip-target="archive_{{ $repost->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
-                                                        <i class="fa-solid fa-box-archive"></i>
-                                                        <div id="archive_{{ $repost->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to archive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
+                                                    <form action="/recruiter/post/inactive/{{ $repost->id }}" method="post">
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="inactive_{{ $repost->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                            <i class="fa-solid fa-eye-slash"></i>
+                                                            <div id="inactive_{{ $repost->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to inactive post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                    <form action="/recruiter/post/archive/{{ $repost->id }}" method="POST">    
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="archive_{{ $repost->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                            <i class="fa-solid fa-box-archive"></i>
+                                                            <div id="archive_{{ $repost->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to archive post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>                                    
                                         </div>
@@ -288,30 +390,33 @@
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
                                                     <span class="bg-red-500 rounded-full px-3 py-[.18rem] text-sm text-gray-50 font-bold tracking-wider">Inactive</span>
-                                                    <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($inactive->created_at)->diffForHumans() }}</span>
+                                                    @if ($inactive->updated_at == null)
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($inactive->created_at)->diffForHumans() }}</span>
+                                                    @else
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($inactive->updated_at)->diffForHumans() }}</span>
+                                                    @endif
                                                 </div>
-                                                <div>
-                                                    <a href="#edit" data-tooltip-target="edit_{{ $inactive->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                        <div id="edit_{{ $inactive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to edit post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </a>
-                                                    <button type="submit" data-tooltip-target="inactive_{{ $inactive->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
-                                                        <i class="fa-solid fa-eye-slash"></i>
-                                                        <div id="inactive_{{ $inactive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to inactive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
-                                                    <button type="submit" data-tooltip-target="archive_{{ $inactive->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
-                                                        <i class="fa-solid fa-box-archive"></i>
-                                                        <div id="archive_{{ $inactive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to archive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
+                                                <div class="inline-flex items-center">
+                                                    <form action="/recruiter/post/repost/{{ $inactive->id }}" method="post">
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="repost_{{ $inactive->id }}" id="status" name="status" class="text-blue-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                            <i class="fa-solid fa-rotate-left"></i>
+                                                            <div id="repost_{{ $inactive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to repost post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                    <form action="/recruiter/post/archive/{{ $inactive->id }}" method="POST">    
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="archive_{{ $inactive->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                            <i class="fa-solid fa-box-archive"></i>
+                                                            <div id="archive_{{ $inactive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to archive post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>                                    
                                         </div>
@@ -330,14 +435,14 @@
                             </div>
                         @else
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                @foreach ($archivePost as $achive)
+                                @foreach ($archivePost as $archive)
                                     <div class="bg-gray-50 rounded flex flex-col border-2 border-gray-200 shadow">
                                         <div class="flex flex-col items-start justify-start px-8 py-4">
                                             <div class="inline-flex items-start mb-2">
-                                                <img src="{{ asset('assets/company/logo/'.$achive->company_logo )}}"  class="h-16 w-16 mr-3" alt="{{ $achive->company_name}}">
+                                                <img src="{{ asset('assets/company/logo/'.$archive->company_logo )}}"  class="h-16 w-16 mr-3" alt="{{ $archive->company_name}}">
                                                 <div class="mb-4">
-                                                    <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">{{ Str::ucfirst($achive->job_title)}}</h2>
-                                                    <p class="text-sm font-medium text-gray-700">{{ $achive->company_name }}</p>
+                                                    <h2 class="text-2xl font-medium whitespace-wrap tracking-tight">{{ Str::ucfirst($archive->job_title)}}</h2>
+                                                    <p class="text-sm font-medium text-gray-700">{{ $archive->company_name }}</p>
                                                 </div>
                                             </div>
                                             <div class="flex flex-col mb-2">
@@ -347,35 +452,38 @@
                                             </div>
                                             <div class="flex flex-col mb-2 h-20">
                                                 <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                                                <p class="text-gray-600">{!! Str::limit($achive->description, 105) !!}<p>
+                                                <p class="text-gray-600">{!! Str::limit($archive->description, 105) !!}<p>
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
                                                     <span class="bg-teal-500 rounded-full px-3 py-[.18rem] text-sm text-gray-50 font-bold tracking-wider">Archived</span>
-                                                    <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($achive->created_at)->diffForHumans() }}</span>
+                                                    @if ($archive->updated_at == null)
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($archive->created_at)->diffForHumans() }}</span>
+                                                    @else
+                                                        <span class="ml-2 text-gray-600 text-sm">{{ Carbon\Carbon::parse($archive->updated_at)->diffForHumans() }}</span>
+                                                    @endif
                                                 </div>
-                                                <div>
-                                                    <a href="#edit" data-tooltip-target="edit_{{ $achive->id }}" class="text-blue-500 hover:text-blue-700 mr-3 text-xl">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                        <div id="edit_{{ $achive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to edit post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </a>
-                                                    <button type="submit" data-tooltip-target="inactive_{{ $achive->id }}" id="status" name="status" class="text-teal-500 hover:text-teal-red-600 mr-3 text-xl">
-                                                        <i class="fa-solid fa-eye-slash"></i>
-                                                        <div id="inactive_{{ $achive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to achive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
-                                                    <button type="submit" data-tooltip-target="archive_{{ $achive->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
-                                                        <i class="fa-solid fa-box-archive"></i>
-                                                        <div id="archive_{{ $achive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                            Click to archive post
-                                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                                        </div>
-                                                    </button>
+                                                <div class="inline-flex items-center">
+                                                    <form action="/recruiter/post/repost/{{ $archive->id }}" method="post">
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="repost_{{ $archive->id }}" id="status" name="status" class="text-blue-500 hover:text-teal-red-600 mr-3 text-xl">
+                                                            <i class="fa-solid fa-rotate-left"></i>
+                                                            <div id="repost_{{ $archive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to repost post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                    <form action="/recruiter/post/archive/{{ $archive->id }}" method="POST">    
+                                                        @csrf
+                                                        <button type="submit" data-tooltip-target="archive_{{ $archive->id }}" id="archive" name="archive" class="text-red-500 hover:text-red-600 text-xl">
+                                                            <i class="fa-solid fa-box-archive"></i>
+                                                            <div id="archive_{{ $archive->id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                                Click to archive post
+                                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>                                    
                                         </div>

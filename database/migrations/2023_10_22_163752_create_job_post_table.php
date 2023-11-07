@@ -19,7 +19,7 @@ return new class extends Migration
             //$table->foreign('recruiter_id')->references('id')->on('recruiters');
             $table->text('job_title');
             $table->text('description');
-            $table->integer('status')->default(0); // 0 = inactive; 1 = active; 2 = repost, 3 = archived
+            $table->integer('status')->default(0); // 0 = inactive; 1 = active; 2 = repost, 3 = archived, 4 = remove
             $table->timestamps();
         });
     }
