@@ -74,6 +74,20 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::post('/post/job', [JobPostController::class, 'createPost'])->name('recruiter_savePost')->middleware('auth:recruiter');
     Route::post('/post/searchcompany', [JobPostController::class, 'showSearchCompany'])->name('recruiter_showcompany')->middleware('auth:recruiter');
     /* Route::post('/post/getID', [RecruiterController::class, 'showGetID'])->name('recruiter_getCompanyID')->middleware('auth:recruiter'); */
+    Route::get('/post/edit/{id}', [RecruiterController::class, 'postToEdit'])->name('recruiter_editpost')->middleware('auth:recruiter');
+
+    // Inactive
+    Route::get('/post/inactive/{id}', [JobPostController::class, 'postToCheckIdInactive'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::post('/post/inactive/{id}', [JobPostController::class, 'postToInactive'])->middleware('auth:recruiter'); // To inactive a job post    
+    // Repost
+    Route::get('/post/repost/{id}', [JobPostController::class, 'postToCheckIdRepost'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::post('/post/repost/{id}', [JobPostController::class, 'postToRepost'])->middleware('auth:recruiter'); // To repost a job post    
+    // Archive 
+    Route::get('/post/archive/{id}', [JobPostController::class, 'postToCheckIdArchive'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::post('/post/archive/{id}', [JobPostController::class, 'postToArchive'])->middleware('auth:recruiter'); // To archive a job post
+    // Remove 
+    Route::get('/post/remove/{id}', [JobPostController::class, 'postToCheckIdRemove'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::post('/post/remove/{id}', [JobPostController::class, 'postToRemove'])->middleware('auth:recruiter'); // To archive a job post
 
     // Company Info
     Route::get('/create', [RecruiterController::class, 'createCompany'])->name('recruiter_createCompany')->middleware('auth:recruiter'); // CREATE COMPANY
