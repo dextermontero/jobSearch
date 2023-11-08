@@ -1,0 +1,43 @@
+    // THIS LINE FOR REPOST FUNCTION
+    public function postToCheckIdRepost($id){
+        $jpExists = JobPost::where('id', $id)->exists(); // Check if ID is exists on table job_posts
+
+        if(!$jpExists){
+            return redirect()->route('recruiter_post')->with('info', 'Job Post doesn\'t exists');
+        }else{
+            return $this->postToRepost($id);
+        }
+    }
+	
+	// THIS LINE FOR INACTIVE FUNCTION
+    public function postToCheckIdInactive($id){
+        $jpExists = JobPost::where('id', $id)->exists(); // Check if ID is exists on table job_posts
+
+        if(!$jpExists){
+            return redirect()->route('recruiter_post')->with('info', 'Job Post doesn\'t exists');
+        }else{
+            return $this->postToInactive($id);
+        }
+    }
+	
+	// THIS LINE FOR ARCHIVE FUNCTION
+    public function postToCheckIdArchive($id){
+        $jpExists = JobPost::where('id', $id)->exists(); // Check if ID is exists on table job_posts
+
+        if(!$jpExists){
+            return redirect()->route('recruiter_post')->with('info', 'Job Post doesn\'t exists');
+        }else{
+            return $this->postToArchive($id);
+        }
+    }
+	
+	// THIS LINE FOR ARCHIVE FUNCTION
+    public function postToCheckIdRemove($id){
+        $jpExists = JobPost::where('id', $id)->exists(); // Check if ID is exists on table job_posts
+
+        if(!$jpExists){
+            return redirect()->route('recruiter_post')->with('info', 'Job Post doesn\'t exists');
+        }else{
+            return $this->postToRemove($id);
+        }
+    }
