@@ -496,5 +496,6 @@
             </div>
         </div>
         @include('partials.r_footer')
+
 </body>
 </html>

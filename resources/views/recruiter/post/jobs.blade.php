@@ -15,7 +15,6 @@
                     </form>
                     <form action="{{ route('recruiter_jobpost') }}" method="POST" class="mb-10 mt-10">
                         @csrf
-                        <span id="displayCompany"></span>
                         <div class="grid grid-cols-1 md:grid-cols-[25%_73%] gap-4">
                             <div class="mb-4 flex justify-center">
                                 <img src="{{ asset('assets/company/logo/default.png') }}" id="company_logo" name="company_logo" class="h-36 w-36">
@@ -27,7 +26,7 @@
                                     <input type="text" id="company_name" name="company_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg border-transparent focus:border-transparent focus:ring-0 rounded-lg block w-full px-0 py-2" value="" placeholder="Company Name" disabled>
                                 </div>
                                 <div class="">
-                                    <label for="company_categories" class="block text-lg font-medium text-gray-900">Country</label>
+                                    <label for="company_categories" class="block text-lg font-medium text-gray-900">Category</label>
                                     <input type="text" id="company_categories" name="company_categories" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg border-transparent focus:border-transparent focus:ring-0 rounded-lg block w-full px-0 py-2" value="" placeholder="Company Categories" disabled>
                                 </div>
                             </div>
@@ -159,15 +158,15 @@
                         $('#post').removeAttr('disabled', 'disabled');
                     }
                 }).on("select2:unselecting", function (e) {
-                        $("#company_id").val("");
-                        $('#company_logo').src = 
-                        pic.src = '{{ asset("assets/company/logo/default.png") }}';
-                        $("#company_name").val("");
-                        $("#company_categories").val("");
-                        $('#job_title').attr('disabled', 'disabled');
-                        $('#post').attr('disabled', 'disabled');
-                        $(".ql-editor").attr('contenteditable', false);
-                        ql[0].innerHTML = "";
+                    $("#company_id").val("");
+                    $('#company_logo').src = 
+                    pic.src = '{{ asset("assets/company/logo/default.png") }}';
+                    $("#company_name").val("");
+                    $("#company_categories").val("");
+                    $('#job_title').attr('disabled', 'disabled');
+                    $('#post').attr('disabled', 'disabled');
+                    $(".ql-editor").attr('contenteditable', false);
+                    ql[0].innerHTML = "";
                 });
             });
           </script>

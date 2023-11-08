@@ -68,25 +68,28 @@ Route::prefix('recruiter')->middleware('nocache')->group(function() {
     Route::get('/applicants', [RecruiterController::class, 'showAllApplicant'])->name('recruiter_applicant')->middleware('auth:recruiter');
     Route::get('/applicants/{id}', [RecruiterController::class, 'showApplicant'])->name('recruiter_viewApplicant')->middleware('auth:recruiter');
 
+
+    /* ------------------------------------------ Job Post Controller ---------------------------------------------------- */
     // Job Post
     Route::get('/post', [JobPostController::class, 'showPost'])->name('recruiter_post')->middleware('auth:recruiter');
     Route::get('/post/job', [RecruiterController::class, 'showJobPost'])->name('recruiter_jobpost')->middleware('auth:recruiter');
     Route::post('/post/job', [JobPostController::class, 'createPost'])->name('recruiter_savePost')->middleware('auth:recruiter');
     Route::post('/post/searchcompany', [JobPostController::class, 'showSearchCompany'])->name('recruiter_showcompany')->middleware('auth:recruiter');
     /* Route::post('/post/getID', [RecruiterController::class, 'showGetID'])->name('recruiter_getCompanyID')->middleware('auth:recruiter'); */
-    Route::get('/post/edit/{id}', [RecruiterController::class, 'postToEdit'])->name('recruiter_editpost')->middleware('auth:recruiter');
+    Route::get('/post/edit/{id}', [JobPostController::class, 'postToEdit'])->name('recruiter_editpost')->middleware('auth:recruiter');
+    Route::post('/post/update/post', [JobPostController::class, 'postToUpdate'])->name('recruiter_updatepost')->middleware('auth:recruiter');
 
     // Inactive
-    Route::get('/post/inactive/{id}', [JobPostController::class, 'postToCheckIdInactive'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::get('/post/inactive/{id}', [JobPostController::class, 'postToCheckID'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
     Route::post('/post/inactive/{id}', [JobPostController::class, 'postToInactive'])->middleware('auth:recruiter'); // To inactive a job post    
     // Repost
-    Route::get('/post/repost/{id}', [JobPostController::class, 'postToCheckIdRepost'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::get('/post/repost/{id}', [JobPostController::class, 'postToCheckID'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
     Route::post('/post/repost/{id}', [JobPostController::class, 'postToRepost'])->middleware('auth:recruiter'); // To repost a job post    
     // Archive 
-    Route::get('/post/archive/{id}', [JobPostController::class, 'postToCheckIdArchive'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::get('/post/archive/{id}', [JobPostController::class, 'postToCheckID'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
     Route::post('/post/archive/{id}', [JobPostController::class, 'postToArchive'])->middleware('auth:recruiter'); // To archive a job post
     // Remove 
-    Route::get('/post/remove/{id}', [JobPostController::class, 'postToCheckIdRemove'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
+    Route::get('/post/remove/{id}', [JobPostController::class, 'postToCheckID'])->middleware('auth:recruiter'); // to check the id if exists on the job_posts
     Route::post('/post/remove/{id}', [JobPostController::class, 'postToRemove'])->middleware('auth:recruiter'); // To archive a job post
 
     // Company Info
