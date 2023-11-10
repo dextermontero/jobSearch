@@ -53,22 +53,6 @@ class RecruiterController extends Controller
     public function createCompany() {
         return view('recruiter.company.create');
     }
-
-    public function postToEdit($id) {
-        $postCheck = JobPost::where('recruiter_id', Auth::id())->where('id', $id)->exists();
-        $postInfo = CompanyList::join('companies', 'companies.company_id', '=', 'company_lists.id')->where('companies.status', '1')->where('companies.recruiter_id', Auth::id())->where('companies.id', '=', $id)->get();
-        
-        $statusCheck = JobPost::select('status')->where('id', $id)->where('recruiter_id', Auth::id())->get();
-        if($postCheck){
-            foreach($statusCheck as $key){
-                if($key->status === 1 || $key->status === 2){
-                    return view('recruiter.post.edit', compact('postInfo'));
-                }
-            }
-            return redirect()->route('recruiter_post')->with('warning','Ooppss, Something went wrong!'); 
-        }
-        return redirect()->route('recruiter_post');
-    }
     
     public function Login(Request $request){
         $credentials = $request->validate([

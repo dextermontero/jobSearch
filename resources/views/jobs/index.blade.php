@@ -65,29 +65,35 @@
             </div>
         </form>
     </div>
-    <div class="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-center p-6">
-        <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
-            <div class="inline-flex items-start mb-5">
-                <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
-                <div class="mb-4">
-                    <h2 class="text-2xl font-semibold">Credit Analyst</h2>
-                    <p class="text-sm font-medium text-gray-700">Company Name</p>
+    <div class="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 p-6">
+        @foreach ($allPost as $post)
+            <a href="/careers/view/{{ $post->id }}" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
+                <div class="inline-flex items-start mb-5">
+                    <img src="{{ asset('assets/company/logo/'.$post->company_logo)}}"  class="h-16 w-16 mr-3" alt="{{ $post->company_name }}">
+                    <div class="mb-4">
+                        <h2 class="text-2xl font-semibold">{{ $post->job_title }}</h2>
+                        <p class="text-sm font-medium text-gray-700">{{ $post->company_name }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hover:text-gray-700 text-gray-700 text-justify">
-                <div class="flex flex-col mb-3">
-                    <span class="font-medium text-gray-600 text-md">&bullet; Makati City</span>
-                    <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
-                    <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
+                <div class="hover:text-gray-700 text-gray-700 text-justify">
+                    <div class="flex flex-col mb-3">
+                        <span class="font-medium text-gray-600 text-md">&bullet; Makati City</span>
+                        <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
+                        <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
+                    </div>
+                    <div class="flex flex-col mb-3">
+                        <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
+                        <p class="text-gray-500">{!! Str::limit($post->description, 293) !!}<p>
+                    </div>
+                    
+                    @if ($post->updated_at == null)
+                        <span class="text-gray-600 text-sm font-mono">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
+                    @else
+                        <span class="text-gray-600 text-sm font-mono">{{ Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</span>
+                    @endif
                 </div>
-                <div class="flex flex-col mb-3">
-                    <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                    <p class="text-gray-500">{{ Illuminate\Support\Str::limit('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', 293) }}<p>
-                </div>
-                <span class="text-gray-600 text-sm font-mono">1 day ago</span>
-                
-            </div>
-        </a>
+            </a>            
+        @endforeach
         <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
                 <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
