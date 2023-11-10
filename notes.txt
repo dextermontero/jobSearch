@@ -1,0 +1,22 @@
+User 
+
+
+
+
+
+Recruiter 
+- Dashboard
+    * Graph Statistics 
+    * Recent Applicant
+- Applicant
+    * All Applicant
+    * View Applicant 
+    * Approve / Reject / Remove
+- Job Post - [INIT DONE]
+    * All Post
+    * View / Create / Edit / Archive / Remove
+- Company
+    * All Company
+    * View / Create or Add / Edit / Archive / Remove 
+
+Admin

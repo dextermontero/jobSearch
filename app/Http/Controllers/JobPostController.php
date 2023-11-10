@@ -19,6 +19,7 @@ class JobPostController extends Controller
         $this->dttm = now();
         $this->status = '1';
     }
+
     // Display All Job Post By Recruiter
     public function showPost() {
         $allPost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->join('recruiters', 'recruiters.id', '=', 'job_posts.recruiter_id')->where('job_posts.recruiter_id', Auth::id())->get();
@@ -65,13 +66,6 @@ class JobPostController extends Controller
         }
         return response()->json($response); 
     }
-
-    /* public function showGetID(Request $request){
-        if($request->id != ''){
-            $showCompany = DB::table('company_lists as cl')->select('cl.id', 'cl.company_name', 'cl.company_logo', 'cl.company_categories')->where('cl.status', '1')->where('id', $request->id)->get();
-            return response()->json(['dispCompany' => $showCompany]);
-        }
-    } */
 
     public function postToCheckID($id){
         // Status Code : 0 = inactive; 1 = active; 2 = repost, 3 = archived, 4 = remove
@@ -189,5 +183,25 @@ class JobPostController extends Controller
         ]);
 
         return redirect()->route('recruiter_post')->with('success', 'Update Job Post Successfully');
+    }
+    /* BELOW THIS LINE FOR USER  */
+
+
+    // Display Job Post to Job Hunters
+    public function showAllPost(){
+        $allPost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->where('job_posts.status', 1)->orWhere('job_posts.status', 2)->get();
+
+        return view('jobs.index', compact('allPost'));
+    }    
+    
+    public function userCareerView($id){
+        $idCheck = JobPost::where('id', $id)->where('status', 1)->orWhere('id', $id)->where('status', 2)->exists();
+        $allPost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->where('job_posts.status', 1)->orWhere('job_posts.status', 2)->get();
+        $jobs = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_bg', 'cl.company_name', 'cl.company_address', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->where('job_posts.id', $id)->get();
+        if($idCheck){
+            return view('jobs.view', compact('allPost', 'jobs'));
+        }
+
+        return redirect()->route('recruiter_post')->with('info', 'Job Post doesn\'t exists');
     }
 }
