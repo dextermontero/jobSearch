@@ -21,7 +21,7 @@ require __DIR__.'/recruiter.php';
 
 Route::controller(JobPostController::class)->group(function() {
     Route::get('/careers', 'showAllPost')->name('career');
-    Route::get('/careers/view/{id}', 'userCareerView');
+    Route::get('/careers/view/{id}', 'userCareerView')->name('career_view');
 });
 
 Route::get('/companies', function() {

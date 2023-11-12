@@ -81,9 +81,9 @@
                                                 <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
                                                 <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
                                             </div>
-                                            <div class="flex flex-col mb-2 h-20">
-                                                <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                                                <p class="text-gray-600">{!! Str::limit($all->description, 105) !!}<p>
+                                            <div class="flex flex-col mb-2 h-28">
+                                                <h3 class="text-medium font-semibold text-lg text-gray-600 h-20">Job Description</h3>
+                                                <p class="text-gray-600">{!! Str::limit($all->description, 110) !!}<p>
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
@@ -235,9 +235,9 @@
                                                 <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
                                                 <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
                                             </div>
-                                            <div class="flex flex-col mb-2 h-20">
-                                                <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                                                <p class="text-gray-600">{!! Str::limit($active->description, 105) !!}<p>
+                                            <div class="flex flex-col mb-2 h-28">
+                                                <h3 class="text-medium font-semibold text-lg text-gray-600 h-20">Job Description</h3>
+                                                <p class="text-gray-600">{!! Str::limit($active->description, 110) !!}<p>
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
@@ -309,9 +309,9 @@
                                                 <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
                                                 <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
                                             </div>
-                                            <div class="flex flex-col mb-2 h-20">
-                                                <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                                                <p class="text-gray-600">{!! Str::limit($repost->description, 105) !!}<p>
+                                            <div class="flex flex-col mb-2 h-28">
+                                                <h3 class="text-medium font-semibold text-lg text-gray-600 h-20">Job Description</h3>
+                                                <p class="text-gray-600">{!! Str::limit($repost->description, 110) !!}<p>
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
@@ -383,9 +383,9 @@
                                                 <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
                                                 <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
                                             </div>
-                                            <div class="flex flex-col mb-2 h-20">
-                                                <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                                                <p class="text-gray-600">{!! Str::limit($inactive->description, 105) !!}<p>
+                                            <div class="flex flex-col mb-2 h-28">
+                                                <h3 class="text-medium font-semibold text-lg text-gray-600 h-20">Job Description</h3>
+                                                <p class="text-gray-600">{!! Str::limit($inactive->description, 110) !!}<p>
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
@@ -450,9 +450,9 @@
                                                 <span class="font-medium text-gray-600 text-md">&bullet; Hybrid</span>
                                                 <span class="font-medium text-gray-600 text-md">&bullet; PHP 20,000 - 25,000 Monthly</span>
                                             </div>
-                                            <div class="flex flex-col mb-2 h-20">
-                                                <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                                                <p class="text-gray-600">{!! Str::limit($archive->description, 105) !!}<p>
+                                            <div class="flex flex-col mb-2 h-28">
+                                                <h3 class="text-medium font-semibold text-lg text-gray-600 h-20">Job Description</h3>
+                                                <p class="text-gray-600">{!! Str::limit($archive->description, 110) !!}<p>
                                             </div>
                                             <div class="flex justify-between items-center w-full">
                                                 <div class="font-poppins ">
@@ -496,6 +496,5 @@
             </div>
         </div>
         @include('partials.r_footer')
-
 </body>
 </html>
