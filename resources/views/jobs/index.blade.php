@@ -65,7 +65,7 @@
             </div>
         </form>
     </div>
-    <div class="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 p-6">
+    <div class="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 p-6 ">
         @foreach ($allPost as $post)
             <a href="/careers/view/{{ $post->id }}" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
                 <div class="inline-flex items-start mb-5">
@@ -83,9 +83,8 @@
                     </div>
                     <div class="flex flex-col mb-3">
                         <h3 class="text-medium font-semibold text-lg text-gray-600">Job Description</h3>
-                        <p class="text-gray-500">{!! Str::limit($post->description, 293) !!}<p>
+                        <p class="text-gray-500">{!! Str::limit($post->description, 198) !!}<p>
                     </div>
-                    
                     @if ($post->updated_at == null)
                         <span class="text-gray-600 text-sm font-mono">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                     @else
@@ -94,7 +93,7 @@
                 </div>
             </a>            
         @endforeach
-        <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
+        {{-- <a href="#" class="bg-white w-full shadow-md rounded-md p-4 text-gray-700 border-2 border-white hover:border-indigo-700 hover:text-indigo-700">
             <div class="inline-flex items-start mb-5">
                 <img src="{{ asset('assets/company/logo/default.png')}}"  class="h-16 w-16 mr-3" alt="Company Logo">
                 <div class="mb-4">
@@ -198,7 +197,7 @@
                 </div>
                 <span class="text-gray-600 text-sm font-mono">1 day ago</span>
             </div>
-        </a>
+        </a> --}}
     </div>
 </div>
 @include('partials.footer')

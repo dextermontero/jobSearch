@@ -197,7 +197,7 @@ class JobPostController extends Controller
     public function userCareerView($id){
         $idCheck = JobPost::where('id', $id)->where('status', 1)->orWhere('id', $id)->where('status', 2)->exists();
         $allPost = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_name', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->where('job_posts.status', 1)->orWhere('job_posts.status', 2)->get();
-        $jobs = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_bg', 'cl.company_name', 'cl.company_address', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->where('job_posts.id', $id)->get();
+        $jobs = JobPost::select('job_posts.id', 'job_posts.job_title', 'cl.company_logo', 'cl.company_bg', 'cl.company_name', 'cl.company_address', 'job_posts.description', 'job_posts.status', 'job_posts.created_at', 'job_posts.updated_at')->join('company_lists as cl', 'cl.id', '=', 'job_posts.company_id')->where('job_posts.id', $id)->first();
         if($idCheck){
             return view('jobs.view', compact('allPost', 'jobs'));
         }

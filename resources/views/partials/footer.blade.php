@@ -42,7 +42,6 @@
                                             <a href="#twitter" class="mr-3 text-black  text-xl"><i class="fa-brands fa-x-twitter"></i></a>
                                             <a href="#instagram" class="mr-3  text-xl text-transparent bg-gradient-to-r bg-clip-text from-orange-400 via-red-500 to-pink-500"><i class="fa-brands fa-instagram"></i></a>
                                             <a href="#linkedin" class="mr-3 text-blue-700 text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
-                                            
                                         </div>
                                     </div>
                                 </div>
